@@ -53,5 +53,5 @@ Figmaで作成。
 ## その他
  * MIRO
 **https://miro.com/welcomeonboard/ZWRSczVkakZ0SVdwM1ZLMlRWdlp3WEV3TjhsbHp3MjY5bmVnOU5SOWJJb0RVQldMa0dLYzJMZHZCcldBckhiQlRoRFora3dLT2NFYWlnVkhGNWhkdVdudm8raHBIQm1ZcUwwNjE1cFJNM2hrSjZkSDF2bkRjT0ZpYW9tWEUyQk50R2lncW1vRmFBVnlLcVJzTmdFdlNRPT0hdjE=?share_link_id=75453222737**
-* GoogleDocument
+ * GoogleDocument
 **https://docs.google.com/document/d/1OxC9vIwPg9OnkA1INxzL3Cc6w8l5_IBOdQ-3EiBMKSQ/edit?usp=sharing**
