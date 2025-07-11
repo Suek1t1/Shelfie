@@ -25,6 +25,9 @@
 |BM05|FN05|書籍一覧表示|登録書籍を一覧表示する   |                                         |書籍一覧                   |           |表紙画像を元に本が表示される           |高  |
 |BM06|FN06|お気に入りページ表示|感想文の横でお気に入りのページを表示|ページ画像                 |ページ画像                  |識別IDが存在|感想欄にページ画像が表示される          |    |
 
+## ユースケース
+<img src="img/usecase.png" alt="ユースケース" width="600">
+
 ## ワイヤーフレーム
 Figmaで作成。
 **https://www.figma.com/design/QCJ4Nj0AJJR8wjoNjib8DP/%E7%9F%A5%E8%83%BD%E6%83%85%E5%A0%B1%E5%9F%BA%E7%A4%8E%E6%BC%94%E7%BF%922-DeveLoop%E7%8F%AD?node-id=0-1&t=lf2IbXf0TSpZQtSf-1**
