@@ -25,6 +25,26 @@
 |BM05|FN05|書籍一覧表示|登録書籍を一覧表示する   |                                         |書籍一覧                   |           |表紙画像を元に本が表示される           |高  |
 |BM06|FN06|お気に入りページ表示|感想文の横でお気に入りのページを表示|ページ画像                 |ページ画像                  |識別IDが存在|感想欄にページ画像が表示される          |    |
 
+## データベース設計
+### ブックテーブル（book）
+| カラム名    | データ型           | 制約                                 | 説明               |
+| :---------- | :----------------- | :----------------------------------- | :----------------- |
+| book_id     | BIGINT             | PRIMARY KEY, AUTO_INCREMENT          | 本の識別子         |
+| img         | BLOB               | NOT NULL                             | 本の表紙、ページ   |
+| name        | VARCHAR(255)       | NOT NULL                             | 本のタイトル       |
+| author      | VARCHAR(50)        | NOT NULL                             | 本の著者           |
+| add_date    | TIMESTAMP          | NOT NULL, DEFAULT CURRENT_TIMESTAMP  | 本の追加日         |
+| code        | VARCHAR(14)        | NOT NULL                             | ISBNコード         |
+| memo        | VARCHAR(511)       | NOT NULL                             | 本の感想等自由記述（任意） |
+| tag         | VARCHAR(10)        | NOT NULL                             | 本のタグ（任意）   |
+| message     | VARCHAR(255)       | NOT NULL                             | 完了メッセージ等の管理 |
+
+### 本棚テーブル（shelf）
+| カラム名    | データ型           | 制約                                 | 説明               |
+| :---------- | :----------------- | :----------------------------------- | :----------------- |
+| shelf_id     | BIGINT             | NOT NULL          | 本棚の識別子         |
+| book_id         | BIGINT               | NOT NULL                             | 本の識別子   |
+
 ## ユースケース
 <img src="img/usecase.png" alt="ユースケース" width="600">
 
