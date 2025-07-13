@@ -4,7 +4,16 @@
 * 本の情報を見たり、本に感想を書いたりできる。
 
 ## 制作環境(Tech Stack)
-まだ何も決めていない
+- フロントエンド
+  - HTML（Jinja2）, CSS
+- バックエンド
+  - Python3
+- フレームワーク
+  - Flask
+- 開発ツール
+  - VSC
+- バージョン管理システム
+  - Git, Github
 
 ## 業務一覧
 |識別子|業務名          |概要                    |備考                                      |
@@ -62,8 +71,15 @@ Figmaで作成。
 <img src="img/shelfie_logos/Shelfie_logo.png" alt="ロゴ1" width="300">
 <img src="img/shelfie_logos/Shelfie_logo2.png" alt="ロゴ2" width="300">
 
+## 処理フロー
+### 書籍登録
+<img src="img/flow-touroku.jpg" alt="書籍登録" width="300">
 
+### 書籍編集
+<img src="img/flow-henshu.jpg" alt="書籍編集" width="300">
 
+### 書籍一覧表示
+<img src="img/flow-ichiran.jpg" alt="書籍一覧表示" width="300">
 
 ## branch命名規則
 1. develop      開発中のものを置くブランチで、mainにマージする
