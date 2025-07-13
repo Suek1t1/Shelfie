@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.5.4)  13 JUL 2025 12:24
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.5.4)  13 JUL 2025 15:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -164,8 +164,44 @@ File: l3backend-dvips.def 2024-05-08 L3 backend support: dvips
 \g__pdf_backend_annotation_int=\count290
 \g__pdf_backend_link_int=\count291
 \g__pdf_backend_link_sf_int=\count292
+) (./sherfie_rep0711.aux
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
 )
-No file sherfie_rep0711.aux.
 \openout1 = `sherfie_rep0711.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
@@ -306,16 +342,16 @@ L3 programming layer <2025-01-18>
  ***********
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3361 strings out of 473836
- 50709 string characters out of 5731190
- 446675 words of memory out of 5000000
- 26596 multiletter control sequences out of 15000+600000
+ 3364 strings out of 473836
+ 50781 string characters out of 5731190
+ 446745 words of memory out of 5000000
+ 26597 multiletter control sequences out of 15000+600000
  571197 words of font info for 92 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  57i,6n,65p,337b,337s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on sherfie_rep0711.dvi (13 pages, 8268 bytes).
+Output written on sherfie_rep0711.dvi (13 pages, 7696 bytes).
