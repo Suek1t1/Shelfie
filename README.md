@@ -81,6 +81,29 @@ Figmaで作成。
 ### 書籍一覧表示
 <img src="img/flow-ichiran.jpg" alt="書籍一覧表示" width="300">
 
+## ファイル構造
+```
+shelfie/
+│
+├── app.py                  # Flaskアプリケーションの本体
+│
+├── static/
+│   ├── css/
+│   │   └── style.css       # 全体のデザイン定義
+│   │
+│   └── images/             # 画像フォルダ
+│
+│
+├── templates/
+│   ├── base.html           # 全ページ共通のヘッダーやフッターを記述
+│   ├── index.html          # トップページ
+│   ├── detail.html         # 本の詳細ページ
+│   ├── new.html            # 本の新規登録フォーム
+│   └── edit.html           # 本の情報編集フォーム
+│
+└── database.db             # SQLiteデータベース
+```
+
 ## branch命名規則
 1. develop      開発中のものを置くブランチで、mainにマージする
 2. feature      新機能開発中に使うブランチで、developにマージする
