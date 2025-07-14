@@ -55,31 +55,31 @@
 | book_id         | BIGINT               | NOT NULL                             | 本の識別子   |
 
 ## ユースケース
-<img src="img/usecase.png" alt="ユースケース" width="600">
+<img src="static/img/usecase.png" alt="ユースケース" width="600">
 
-## ワイヤーフレーム
+## ワイヤーフレームp
 Figmaで作成。
 **https://www.figma.com/design/QCJ4Nj0AJJR8wjoNjib8DP/%E7%9F%A5%E8%83%BD%E6%83%85%E5%A0%B1%E5%9F%BA%E7%A4%8E%E6%BC%94%E7%BF%922-DeveLoop%E7%8F%AD?node-id=0-1&t=lf2IbXf0TSpZQtSf-1**
 
 ### トップページ
-<img src="img/toppage.png" alt="トップページ" width="600">
+<img src="static/img/toppage.png" alt="トップページ" width="600">
 
 ### 詳細ページ
-<img src="img/detailpage.png" alt="本の詳細ページ" width="600">
+<img src="static/img/detailpage.png" alt="本の詳細ページ" width="600">
 
 ### ロゴ
-<img src="img/shelfie_logos/Shelfie_logo.png" alt="ロゴ1" width="300">
-<img src="img/shelfie_logos/Shelfie_logo2.png" alt="ロゴ2" width="300">
+<img src="static/img/shelfie_logos/Shelfie_logo.png" alt="ロゴ1" width="300">
+<img src="static/img/shelfie_logos/Shelfie_logo2.png" alt="ロゴ2" width="300">
 
 ## 処理フロー
 ### 書籍登録
-<img src="img/flow-touroku.jpg" alt="書籍登録" width="300">
+<img src="static/img/flow-touroku.jpg" alt="書籍登録" width="300">
 
 ### 書籍編集
-<img src="img/flow-henshu.jpg" alt="書籍編集" width="300">
+<img src="static/img/flow-henshu.jpg" alt="書籍編集" width="300">
 
 ### 書籍一覧表示
-<img src="img/flow-ichiran.jpg" alt="書籍一覧表示" width="300">
+<img src="static/img/flow-ichiran.jpg" alt="書籍一覧表示" width="300">
 
 ## ファイル構造
 ```
@@ -101,7 +101,11 @@ shelfie/
 │   ├── new.html            # 本の新規登録フォーム
 │   └── edit.html           # 本の情報編集フォーム
 │
-└── database.db             # SQLiteデータベース
+├── shelfie_rep/            # レポートフォルダ
+│
+├── database.db             # SQLiteデータベース
+│
+└── README.md
 ```
 
 ## branch命名規則
