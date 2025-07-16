@@ -95,7 +95,7 @@ Figmaで作成。そのスクリーンショットを添付する。
 MIROで作成。そのスクリーンショットを添付する
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=120mm]{usecase.png}
+\includegraphics[width=100mm]{usecase.png}
 \label{fig:func}
 \end{figure}
 
@@ -119,6 +119,13 @@ MIROで作成。そのスクリーンショットを添付する
 \end{itemize}
 
 \subsection{システム構成}
+ハードウェア構成は、ユーザーPCとサーバーPCの2つで構成されます。
+
+ソフトウェア構成は、ユーザーPCのWebブラウザ、サーバーPCのWebサーバーで構成されます。データベースはSQLiteを使用するため、データベースサーバーは用意しません。
+
+ネットワーク構成は、ユーザーPCがネットワークを介してサーバーPCにアクセスする形になります。
+
+以下は、フロントエンドとバックエンドの構成図です。
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=70mm]{systemStructure.jpg}
@@ -133,6 +140,8 @@ MIROで作成。そのスクリーンショットを添付する
 \label{fig:func}
 \end{figure}
 
+ブックテーブルの主キーは'book\_id'で、本の一意な識別子です。IDの被りを防ぐため、AUTO\_INCREMENTも制約として設定しています。画像は'img'カラムに保存され、データ型はBLOBを使用し、バイナリデータで画像を保存します。'add\_date'は本の追加日時を記録するためのDATETIME型で、デフォルト値は現在日時に設定しています。その他のカラムは、書籍のタイトル、著者、出版社、ISBN、ジャンル、評価、感想を保存するためのVARCHAR型で、それぞれ適切な長さを設定し、NOT NULL制約を付けています。
+
 \subsubsection{本棚テーブル（shelf）}
 \begin{figure}[htbp]
 \centering
@@ -140,12 +149,14 @@ MIROで作成。そのスクリーンショットを添付する
 \label{fig:func}
 \end{figure}
 
+本棚テーブルの主キーは'shelf\_id'で、本棚の一意な識別子です。'shelf\_name'は本棚の名前を保存するためのVARCHAR型で、NOT NULL制約を付けています。外部キーとしてbook\_idを設定し、ブックテーブルのbook\_idと関連付けています。これにより、本棚に登録されている本の情報を参照できます。
+
 \clearpage
 \subsection{各機能の処理フロー}
 \subsubsection{書籍一覧表示}
 \begin{figure}[h]
-\centering
-\includegraphics[width=100mm]{flow-ichiran.jpg}
+  ユーザーが行う操作は、ホームボタンを押すことです。それにより、アプリ側はトップページに遷移し、本棚情報をデータベースから取得します。取得した本棚情報から、本棚の画像や名前をレンダリングします。
+\includegraphics[width=70mm]{flow-ichiran.jpg}
 \label{fig:func}
 \end{figure}
 
