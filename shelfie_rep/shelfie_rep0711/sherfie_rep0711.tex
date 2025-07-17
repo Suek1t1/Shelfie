@@ -1,5 +1,6 @@
 \documentclass[a4paper, 11pt, titlepage]{jsarticle}
 \usepackage[dvipdfmx]{graphicx}
+\usepackage{array}
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{comment}
@@ -57,21 +58,57 @@ Shelfie
 \clearpage
 
 \section{要件定義書}%----------------------------------------------------------------------------------------------
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=120mm]{work.png}
-\label{fig:func}
-\end{figure}
+今回の授業で作成するアプリの要件定義表を以下に示します。本棚として使用するために最低限必要な、書籍情報の登録、検索、編集、削除、一覧表示の業務を実装します。
 
+また、今回は開発期間が短い都合上、ユーザー機能を実装しないこととしました。本棚の情報はブラウザのキャッシュに保存することとします。
 
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|l|l|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{5cm}|}
+    \hline
+    \textbf{識別子} & \textbf{業務名} & \textbf{概要} & \textbf{備考} \\
+    \hline\hline
+    BM01 & 書籍登録 & 書籍の情報を登録する & 表紙画像、ISBN、JANコード、タイトル、著者名、追加日 \\
+    \hline
+    BM02 & 書籍検索 & 書籍の情報を基に検索する & ISBN、JANコード、タイトル、著者名、タグ \\
+    \hline
+    BM03 & 書籍編集 & 感想・メモの登録タグ付け機能 & タグ作成 \\
+    \hline
+    BM04 & 書籍削除 & 書籍の情報を削除する & 一括削除 \\
+    \hline
+    BM05 & 書籍一覧表示 & 登録書籍を一覧表示する & 本棚表示 \\
+    \hline
+  \end{tabular}
+  \caption{要件定義表}
+  \label{tab:requirements}
+\end{table}
 
-\section{基本設計書}%----------------------------------------------------------------------------------------------
-\subsection{基本機能}
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=120mm]{function.png}
-\label{fig:func}
-\end{figure}
+\section{基本設計書}
+基本設計では、先程の要件定義表をもとに、各機能の詳細を設計しました。優先度が高い機能から順に実装していきます。次ページに、基本設計表を示します。
+%----------------------------------------------------------------------------------------------
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|>{\centering\arraybackslash}m{0.9cm}|>{\centering\arraybackslash}m{0.9cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{1.8cm}|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{0.3cm}|}
+    \hline
+    \textbf{識別子} & \textbf{機能ID} & \textbf{機能名} & \textbf{機能要件} & \textbf{入力} & \textbf{出力} & \textbf{前提条件} & \textbf{事後条件} & \textbf{優先度} \\
+    \hline\hline
+    BM01 & FN01 & 書籍登録 & 書籍情報登録、識別ID割り振り & 表紙画像、ISBN、JANコード、タイトル、著者名、追加日 & 表紙画像、完了メッセージ & & 表紙画像が参照できる & 高 \\
+    \hline
+    BM02 & FN02 & 書籍検索 & 書籍の情報を基に検索する & キーワード、著者名、タイトル、タグ、識別ID & 検索結果 & 書籍情報が登録されている & 検索結果が表示される & 中 \\
+    \hline
+    BM03 & FN03 & 書籍編集 & 感想・メモの登録、タグ付け機能 & 識別ID、自由記述、タグ & 更新完了メッセージ & 識別IDが存在 & 変更内容が反映される & 高 \\
+    \hline
+    BM04 & FN04 & 書籍削除 & 書籍情報を削除する & 識別ID & 削除完了メッセージ & 識別IDが存在 & 本棚から本の削除、登録情報が削除されている & 高 \\
+    \hline
+    BM05 & FN05 & 書籍一覧表示 & 登録書籍を一覧表示する & & 書籍一覧 & 書籍情報が登録されている & 本棚に登録されている書籍が一覧表示される & 高 \\
+    \hline
+    BM06 & FN06 & お気に入りページ表示 & 感想文の横でお気に入りのページを表示 & ページ画像 & ページ画像 & 識別IDが存在 & 感想欄にページ画像が表示される & 中 \\
+    \hline
+  \end{tabular}
+  \caption{要件定義表}
+  \label{tab:requirements}
+\end{table}
 
 \clearpage
 
@@ -155,10 +192,11 @@ MIROで作成。そのスクリーンショットを添付する
 \subsection{各機能の処理フロー}
 \subsubsection{書籍一覧表示}
 \begin{figure}[h]
-  ユーザーが行う操作は、ホームボタンを押すことです。それにより、アプリ側はトップページに遷移し、本棚情報をデータベースから取得します。取得した本棚情報から、本棚の画像や名前をレンダリングします。
-\includegraphics[width=70mm]{flow-ichiran.jpg}
-\label{fig:func}
+  \centering
+  \includegraphics[width=100mm]{flow-ichiran.jpg}
+  \label{fig:func}
 \end{figure}
+ユーザーが行う操作は、ホームボタンを押すことです。それにより、アプリ側はトップページに遷移し、本棚情報をデータベースから取得します。取得した本棚情報から、本棚の画像や名前をレンダリングします。
 
 \clearpage
 \subsubsection{書籍登録}
@@ -168,6 +206,7 @@ MIROで作成。そのスクリーンショットを添付する
 \label{fig:func}
 \end{figure}
 
+ユーザーが行う操作は、書籍の登録を要求する、すなわち登録ボタンを押すことです。操作が行われると、アプリ側で登録フォームを表示し、ユーザーに各種情報の入力を求めます。ユーザーが必要な情報を入力し、登録ボタンを押すと、アプリ側はその情報がフォームの
 \clearpage
 \subsubsection{書籍編集}
 \begin{figure}[h]
