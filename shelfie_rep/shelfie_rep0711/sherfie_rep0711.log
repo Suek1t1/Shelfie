@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.5.4)  17 JUL 2025 13:36
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.5.4)  17 JUL 2025 13:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -178,9 +178,6 @@ File: l3backend-dvips.def 2024-05-08 L3 backend support: dvips
 LaTeX Warning: Label `fig:func' multiply defined.
 
 
-LaTeX Warning: Label `tab:requirements' multiply defined.
-
-
 LaTeX Warning: Label `fig:func' multiply defined.
 
 
@@ -193,10 +190,7 @@ LaTeX Warning: Label `fig:func' multiply defined.
 LaTeX Warning: Label `fig:func' multiply defined.
 
 
-LaTeX Warning: Label `fig:func' multiply defined.
-
-
-LaTeX Warning: Label `fig:func' multiply defined.
+LaTeX Warning: Label `tab:booktable' multiply defined.
 
 
 LaTeX Warning: Label `fig:func' multiply defined.
@@ -393,36 +387,33 @@ File: systemStructure.jpg Graphic file (type bmp)
 
 
 [8]
-File: databasebook.png Graphic file (type bmp)
-<databasebook.png>
-File: databaseshelf.png Graphic file (type bmp)
-<databaseshelf.png>
-
 
 [9]
+
+[10]
 File: flow-ichiran.jpg Graphic file (type bmp)
 <flow-ichiran.jpg>
 
 
-[10
+[11
 
 ]
 File: flow-touroku.jpg Graphic file (type bmp)
 <flow-touroku.jpg>
 
 
-[11
+[12
 
 ]
 File: flow-henshu.jpg Graphic file (type bmp)
 <flow-henshu.jpg>
 
 
-[12
+[13
 
 ]
 
-[13] (./sherfie_rep0711.aux)
+[14] (./sherfie_rep0711.aux)
  ***********
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2024-11-01> patch level 2
@@ -434,12 +425,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3425 strings out of 473836
- 51480 string characters out of 5731190
- 461002 words of memory out of 5000000
- 26659 multiletter control sequences out of 15000+600000
+ 3414 strings out of 473836
+ 51173 string characters out of 5731190
+ 461044 words of memory out of 5000000
+ 26652 multiletter control sequences out of 15000+600000
  571835 words of font info for 96 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 57i,10n,65p,607b,334s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,11n,65p,607b,334s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on sherfie_rep0711.dvi (14 pages, 18360 bytes).
+Output written on sherfie_rep0711.dvi (15 pages, 21168 bytes).

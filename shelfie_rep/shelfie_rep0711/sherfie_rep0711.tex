@@ -57,7 +57,7 @@ Shelfie
 
 \clearpage
 
-\section{業務要件}%----------------------------------------------------------------------------------------------
+\section{要件定義}%----------------------------------------------------------------------------------------------
 今回の授業で作成するアプリの要件定義表を以下に示します。本棚として使用するために最低限必要な、書籍情報の登録、検索、編集、削除、一覧表示の業務を実装します。
 
 また、今回は開発期間が短い都合上、ユーザー機能を実装しないこととしました。本棚の情報はブラウザのキャッシュに保存することとします。
@@ -79,14 +79,14 @@ Shelfie
     BM05 & 書籍一覧表示 & 登録書籍を一覧表示する & 本棚表示 \\
     \hline
   \end{tabular}
-  \caption{要件定義表}
+  \caption{業務要件表}
   \label{tab:requirements}
 \end{table}
 
-\section{機能要件}
+\section{基本設計}
 基本設計では、先程の要件定義表をもとに、各機能の詳細を設計しました。優先度が高い機能から順に実装していきます。次ページに、基本設計表を示します。
 %----------------------------------------------------------------------------------------------
-
+\subsection{機能要件表}
 \begin{table}[htbp]
   \centering
   \begin{tabular}{|>{\centering\arraybackslash}m{0.9cm}|>{\centering\arraybackslash}m{0.9cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{1.8cm}|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{0.3cm}|}
@@ -106,8 +106,8 @@ Shelfie
     BM06 & FN06 & お気に入りページ表示 & 感想文の横でお気に入りのページを表示 & ページ画像 & ページ画像 & 識別IDが存在 & 感想欄にページ画像が表示される & 中 \\
     \hline
   \end{tabular}
-  \caption{要件定義表}
-  \label{tab:requirements}
+  \caption{機能要件表}
+  \label{tab:functions}
 \end{table}
 
 \clearpage
@@ -171,20 +171,53 @@ MIROで作成。そのスクリーンショットを添付する
 
 \subsection{データベース設計}
 \subsubsection{ブックテーブル（book）}
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=120mm]{databasebook.png}
-\label{fig:func}
-\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|l|l|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{3cm}|}
+    \hline
+    \textbf{カラム名} & \textbf{データ型} & \textbf{制約} & \textbf{説明} \\
+    \hline\hline
+    book\_id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & 本の識別子 \\
+    \hline
+    img & BLOB & NOTNULL & 本の表紙、ページ \\
+    \hline
+    name & VARCHAR(255) & NOTNULL & 本のタイトル \\
+    \hline
+    author & VARCHAR(50) & NOTNULL & 本の著者 \\
+    \hline
+    add\_date & TIMESTAMP & NOTNULL, DEFAULT, CURRENT\_TIMESTAMP & 本の追加日 \\
+    \hline
+    code & VARCHAR(14) & NOTNULL & ISBNコード \\
+    \hline
+    memo & VARCHAR(511) & NOTNULL & 本の感想等自由記述（任意） \\
+    \hline
+    tag & VARCHAR(10) & NOTNULL & 本のタグ（任意） \\
+    \hline
+    message & VARCHAR(255) & NOTNULL & 完了メッセージ等の管理 \\
+    \hline
+  \end{tabular}
+  \caption{ブックテーブル（book）}
+  \label{tab:booktable}
+\end{table}
 
 ブックテーブルの主キーは'book\_id'で、本の一意な識別子です。IDの被りを防ぐため、AUTO\_INCREMENTも制約として設定しています。画像は'img'カラムに保存され、データ型はBLOBを使用し、バイナリデータで画像を保存します。'add\_date'は本の追加日時を記録するためのDATETIME型で、デフォルト値は現在日時に設定しています。その他のカラムは、書籍のタイトル、著者、出版社、ISBN、ジャンル、評価、感想を保存するためのVARCHAR型で、それぞれ適切な長さを設定し、NOT NULL制約を付けています。
 
 \subsubsection{本棚テーブル（shelf）}
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=120mm]{databaseshelf.png}
-\label{fig:func}
-\end{figure}
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|l|l|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{3cm}|}
+    \hline
+    \textbf{カラム名} & \textbf{データ型} & \textbf{制約} & \textbf{説明} \\
+    \hline\hline
+    shelf\_id & BIGINT & NOT NULL & 本棚の識別子 \\
+    \hline
+    book\_id & BIGINT & NOT NULL & 本の識別子 \\
+    \hline
+  \end{tabular}
+  \caption{本棚テーブル（shelf）}
+  \label{tab:shelftable}
+\end{table}
 
 本棚テーブルの主キーは'shelf\_id'で、本棚の一意な識別子です。'shelf\_name'は本棚の名前を保存するためのVARCHAR型で、NOT NULL制約を付けています。外部キーとしてbook\_idを設定し、ブックテーブルのbook\_idと関連付けています。これにより、本棚に登録されている本の情報を参照できます。
 
