@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.5.4)  17 JUL 2025 13:52
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.5.4)  18 JUL 2025 11:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -190,9 +190,6 @@ LaTeX Warning: Label `fig:func' multiply defined.
 LaTeX Warning: Label `fig:func' multiply defined.
 
 
-LaTeX Warning: Label `tab:booktable' multiply defined.
-
-
 LaTeX Warning: Label `fig:func' multiply defined.
 
 
@@ -204,63 +201,73 @@ LaTeX Warning: Label `fig:func' multiply defined.
 )
 \openout1 = `sherfie_rep0711.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
 \c@lstlisting=\count293
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 16.60605pt on input line 13.
+(Font)              scaled to size 16.60605pt on input line 14.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 16.60605pt on input line 13.
+(Font)              scaled to size 16.60605pt on input line 14.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 13.
+(Font)              scaled to size 11.53198pt on input line 14.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 13.
+(Font)              scaled to size 11.53198pt on input line 14.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 13.
+(Font)              scaled to size 5.76599pt on input line 14.
 
 
 [1
 
 ]
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 18.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 18.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 17.
+(Font)              scaled to size 13.83836pt on input line 18.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 17.
+(Font)              scaled to size 13.83836pt on input line 18.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 17.
+(Font)              scaled to size 13.83836pt on input line 18.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 17.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 18.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 18.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 32.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 32.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 32.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 32.
+(Font)              scaled to size 13.83836pt on input line 18.
+ (./sherfie_rep0711.toc
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 2.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 2.
+)
+\tf@toc=\write4
+\openout4 = `sherfie_rep0711.toc'.
+
 
 
 [1
+
+]
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 22.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 22.
+
+
+[2
 
 ]
 File: shelfie_logo.png Graphic file (type bmp)
@@ -269,151 +276,167 @@ File: shelfie_logo2.png Graphic file (type bmp)
 <shelfie_logo2.png>
 
 
-[2
+[3
 
 ]
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 67.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 67.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 60.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 60.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 60.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 60.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 82.
+(Font)              scaled to size 8.64899pt on input line 73.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 82.
+(Font)              scaled to size 8.64899pt on input line 73.
 
-Overfull \hbox (0.71097pt too wide) in paragraph at lines 94--95
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 84--85
  []|\JY1/gt/m/n/10 優 
  []
 
 
-Overfull \hbox (0.71097pt too wide) in paragraph at lines 94--95
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 84--85
  \JY1/gt/m/n/10 先 
  []
 
 
-Overfull \hbox (0.71097pt too wide) in paragraph at lines 94--95
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 84--85
  \JY1/gt/m/n/10 度| 
  []
 
 
-Overfull \hbox (0.64278pt too wide) in paragraph at lines 96--96
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 86--86
  []|\OT1/cmr/m/n/10 BM01| 
  []
 
 
-Overfull \hbox (0.71097pt too wide) in paragraph at lines 96--97
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 86--87
  []|\JY1/mc/m/n/10 高| 
  []
 
 
-Overfull \hbox (0.64278pt too wide) in paragraph at lines 98--98
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 88--88
  []|\OT1/cmr/m/n/10 BM02| 
  []
 
 
-Overfull \hbox (0.71097pt too wide) in paragraph at lines 98--99
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 88--89
  []|\JY1/mc/m/n/10 中| 
  []
 
 
-Overfull \hbox (0.64278pt too wide) in paragraph at lines 100--100
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 90--90
  []|\OT1/cmr/m/n/10 BM03| 
  []
 
 
-Overfull \hbox (0.71097pt too wide) in paragraph at lines 100--101
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 90--91
  []|\JY1/mc/m/n/10 高| 
  []
 
 
-Overfull \hbox (0.64278pt too wide) in paragraph at lines 102--102
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 92--92
  []|\OT1/cmr/m/n/10 BM04| 
  []
 
 
-Overfull \hbox (0.71097pt too wide) in paragraph at lines 102--103
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 92--93
  []|\JY1/mc/m/n/10 高| 
  []
 
 
-Overfull \hbox (0.64278pt too wide) in paragraph at lines 104--104
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 94--94
  []|\OT1/cmr/m/n/10 BM05| 
  []
 
 
-Overfull \hbox (0.71097pt too wide) in paragraph at lines 104--105
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 94--95
  []|\JY1/mc/m/n/10 高| 
  []
 
 
-Overfull \hbox (0.64278pt too wide) in paragraph at lines 106--106
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 96--96
  []|\OT1/cmr/m/n/10 BM06| 
  []
 
 
-Overfull \hbox (0.71097pt too wide) in paragraph at lines 106--107
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 96--97
  []|\JY1/mc/m/n/10 中| 
  []
 
 
-Overfull \hbox (3.89145pt too wide) in paragraph at lines 92--109
+Overfull \hbox (3.89145pt too wide) in paragraph at lines 82--99
  [][] 
  []
 
 
 
-[3
+[4
 
 ]
 
-[4]
+[5]
 File: toppage.png Graphic file (type bmp)
 <toppage.png>
+
+
+[6
+
+]
 File: detailpage.png Graphic file (type bmp)
 <detailpage.png>
+
+
+[7
+
+]
 File: usecase.png Graphic file (type bmp)
 <usecase.png>
 
 
-[5
+[8
 
 ]
 
-[6]
+[9]
 
-[7]
+[10
+
+]
 File: systemStructure.jpg Graphic file (type bmp)
 <systemStructure.jpg>
 
 
-[8]
+[11
 
-[9]
+]
 
-[10]
+[12]
 File: flow-ichiran.jpg Graphic file (type bmp)
 <flow-ichiran.jpg>
 
 
-[11
+[13
 
 ]
 File: flow-touroku.jpg Graphic file (type bmp)
 <flow-touroku.jpg>
 
 
-[12
+[14
 
 ]
 File: flow-henshu.jpg Graphic file (type bmp)
 <flow-henshu.jpg>
 
 
-[13
+[15
 
 ]
 
-[14] (./sherfie_rep0711.aux)
+[16] (./sherfie_rep0711.aux)
  ***********
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2024-11-01> patch level 2
@@ -425,12 +448,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3414 strings out of 473836
- 51173 string characters out of 5731190
- 461044 words of memory out of 5000000
- 26652 multiletter control sequences out of 15000+600000
+ 3422 strings out of 473836
+ 51329 string characters out of 5731190
+ 461067 words of memory out of 5000000
+ 26657 multiletter control sequences out of 15000+600000
  571835 words of font info for 96 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 57i,11n,65p,607b,334s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,11n,65p,607b,330s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on sherfie_rep0711.dvi (15 pages, 21168 bytes).
+Output written on sherfie_rep0711.dvi (17 pages, 30912 bytes).
