@@ -46,7 +46,6 @@
 | code        | BIGINT        | NOT NULL                             | ISBNコード         |
 | memo        | VARCHAR(511)       | NOT NULL                             | 本の感想等自由記述（任意） |
 | tag         | VARCHAR(10)        | NOT NULL                             | 本のタグ（任意）   |
-| message     | VARCHAR(255)       | NOT NULL                             | 完了メッセージ等の管理 |
 
 ### 本棚テーブル（shelf）
 | カラム名    | データ型           | 制約                                 | 説明               |
