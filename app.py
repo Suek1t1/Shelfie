@@ -84,5 +84,69 @@ def index():
     return render_template("index.html", shelves=shelves, books=books)
 
 
+@app.route("/new", methods=["GET", "POST"])
+def new_book():
+    # フォームの作成
+    form = UserInfoForm(request.form)
+    # POST
+    if request.method == "POST" and form.validate():
+        # 入力値取得
+        img = request.form["img"]
+        name = request.form["name"]
+        author = request.form["author"]
+        add_date = request.form["add_date"]
+        code = request.form["code"]
+        memo = request.form["memo"]
+        tag = request.form["tag"]
+        # インスタンス生成
+        book = Book(
+            img=img,  # バイナリデータの場合は file.read() などで渡す
+            name=name,
+            author=author,
+            add_date=add_date,  # 日付型ならdatetime型で渡す
+            code=code,
+            memo=memo,
+            tag=tag,
+        )
+        # 登録
+        db.session.add(book)
+        db.session.commit()
+        return redirect(url_for("index", form=form))
+    # GET
+    return render_template("new.html", form=form)
+
+
+@app.route("/edit", methods=["GET", "POST"])
+def edit(book_id):
+    # 対象データ取得
+    book = Book.query.get(book_id)
+    # フォームの作成
+    form = UserInfoForm(request.form)
+    # POST
+    if request.method == "POST" and form.validate():
+        # 入力値取得
+        img = request.form["img"]
+        name = request.form["name"]
+        author = request.form["author"]
+        add_date = request.form["add_date"]
+        code = request.form["code"]
+        memo = request.form["memo"]
+        tag = request.form["tag"]
+        # 登録
+        book.img = img
+        book.name = name
+        book.author = author
+        book.add_date = add_date
+        book.code = code
+        book.memo = memo
+        book.tag = tag
+        # 反映
+        db.session.commit()
+        # 一覧へ
+        return redirect(url_for("index", form=form))
+    # GET
+    return render_template("edit", form=form)
+
+
 if __name__ == "__main__":
     app.run()
