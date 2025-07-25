@@ -1,0 +1,459 @@
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.5.4)  18 JUL 2025 11:49
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**/Users/tutaya/Shelfie/shelfie_rep/shelfie_rep0711/sherfie_rep0711
+(/Users/tutaya/Shelfie/shelfie_rep/shelfie_rep0711/sherfie_rep0711.tex
+pLaTeX2e <2023-02-14>+1, based on
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+(/usr/local/texlive/2025/texmf-dist/tex/platex/jsclasses/jsarticle.cls
+Document Class: jsarticle 2023/02/23 jsclasses (okumura, texjporg)
+Class jsarticle Info: Autodetected engine: pLaTeX on input line 236.
+\jsc@mpt=\dimen157
+\jsc@mmm=\dimen158
+\jsc@smallskipamount=\skip49
+LaTeX Info: Redefining \textmc on input line 511.
+LaTeX Info: Redefining \textgt on input line 513.
+\symmincho=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 575.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 769.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 769.
+\fullwidth=\dimen159
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 922.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 922.
+\c@part=\count195
+\c@section=\count196
+\c@subsection=\count197
+\c@subsubsection=\count198
+\c@paragraph=\count199
+\c@subparagraph=\count266
+\@abstractbox=\box69
+\c@figure=\count267
+\c@table=\count268
+\abovecaptionskip=\skip50
+\belowcaptionskip=\skip51
+\jsc@tocl@width=\dimen160
+\@lnumwidth=\dimen161
+\bibindent=\dimen162
+(/usr/local/texlive/2025/texmf-dist/tex/platex/jsclasses/jslogo.sty
+Package: jslogo 2019/07/25 okumura, texjporg
+LaTeX Info: Redefining \TeX on input line 82.
+LaTeX Info: Redefining \LaTeX on input line 135.
+LaTeX Info: Redefining \LaTeXe on input line 188.
+)
+\heisei=\count269
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvipdfmx.def on input line 106.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2022/09/22 v5.0m Graphics/color driver for dvipdfmx
+))
+\Gin@req@height=\dimen163
+\Gin@req@width=\dimen164
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/array.sty
+Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
+\col@sep=\dimen165
+\ar@mcellbox=\box70
+\extrarowheight=\dimen166
+\NC@list=\toks19
+\extratabsurround=\skip52
+\backup@length=\skip53
+\ar@cellbox=\box71
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count270
+\lst@gtempboxa=\box72
+\lst@token=\toks20
+\lst@length=\count271
+\lst@currlwidth=\dimen167
+\lst@column=\count272
+\lst@pos=\count273
+\lst@lostspace=\dimen168
+\lst@width=\dimen169
+\lst@newlines=\count274
+\lst@lineno=\count275
+\lst@maxwidth=\dimen170
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
+\c@lstnumber=\count276
+\lst@skipnumbers=\count277
+\lst@framebox=\box73
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2024/09/23 1.10c listings configuration
+))
+Package: listings 2024/09/23 1.10c (Carsten Heinz)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2024/11/05 v2.17t AMS math features
+\@mathmargin=\skip54
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks21
+\ex@=\dimen171
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen172
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count278
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count279
+\leftroot@=\count280
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count281
+\DOTSCASE@=\count282
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box74
+\strutbox@=\box75
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen173
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count283
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count284
+\dotsspace@=\muskip17
+\c@parentequation=\count285
+\dspbrk@lvl=\count286
+\tag@help=\toks22
+\row@=\count287
+\column@=\count288
+\maxfields@=\count289
+\andhelp@=\toks23
+\eqnshift@=\dimen174
+\alignsep@=\dimen175
+\tagshift@=\dimen176
+\tagwidth@=\dimen177
+\totwidth@=\dimen178
+\lineht@=\dimen179
+\@envbody=\toks24
+\multlinegap=\skip55
+\multlinetaggap=\skip56
+\mathdisplay@stack=\toks25
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write3
+ Excluding comment 'comment') (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+File: l3backend-dvips.def 2024-05-08 L3 backend support: dvips
+\l__pdf_internal_box=\box76
+\l__pdf_backend_content_box=\box77
+\l__pdf_backend_model_box=\box78
+\g__pdf_backend_annotation_int=\count290
+\g__pdf_backend_link_int=\count291
+\g__pdf_backend_link_sf_int=\count292
+) (./sherfie_rep0711.aux
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+
+LaTeX Warning: Label `fig:func' multiply defined.
+
+)
+\openout1 = `sherfie_rep0711.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+\c@lstlisting=\count293
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 16.60605pt on input line 14.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 16.60605pt on input line 14.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 14.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 14.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 14.
+
+
+[1
+
+]
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 18.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 18.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 18.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 18.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 18.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 18.
+ (./sherfie_rep0711.toc
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 2.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 2.
+)
+\tf@toc=\write4
+\openout4 = `sherfie_rep0711.toc'.
+
+
+
+[1
+
+]
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 22.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 22.
+
+
+[2
+
+]
+File: shelfie_logo.png Graphic file (type bmp)
+<shelfie_logo.png>
+File: shelfie_logo2.png Graphic file (type bmp)
+<shelfie_logo2.png>
+
+
+[3
+
+]
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 60.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 60.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 60.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 60.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 73.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 73.
+
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 84--85
+ []|\JY1/gt/m/n/10 優 
+ []
+
+
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 84--85
+ \JY1/gt/m/n/10 先 
+ []
+
+
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 84--85
+ \JY1/gt/m/n/10 度| 
+ []
+
+
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 86--86
+ []|\OT1/cmr/m/n/10 BM01| 
+ []
+
+
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 86--87
+ []|\JY1/mc/m/n/10 高| 
+ []
+
+
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 88--88
+ []|\OT1/cmr/m/n/10 BM02| 
+ []
+
+
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 88--89
+ []|\JY1/mc/m/n/10 中| 
+ []
+
+
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 90--90
+ []|\OT1/cmr/m/n/10 BM03| 
+ []
+
+
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 90--91
+ []|\JY1/mc/m/n/10 高| 
+ []
+
+
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 92--92
+ []|\OT1/cmr/m/n/10 BM04| 
+ []
+
+
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 92--93
+ []|\JY1/mc/m/n/10 高| 
+ []
+
+
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 94--94
+ []|\OT1/cmr/m/n/10 BM05| 
+ []
+
+
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 94--95
+ []|\JY1/mc/m/n/10 高| 
+ []
+
+
+Overfull \hbox (0.64278pt too wide) in paragraph at lines 96--96
+ []|\OT1/cmr/m/n/10 BM06| 
+ []
+
+
+Overfull \hbox (0.71097pt too wide) in paragraph at lines 96--97
+ []|\JY1/mc/m/n/10 中| 
+ []
+
+
+Overfull \hbox (3.89145pt too wide) in paragraph at lines 82--99
+ [][] 
+ []
+
+
+
+[4
+
+]
+
+[5]
+File: toppage.png Graphic file (type bmp)
+<toppage.png>
+
+
+[6
+
+]
+File: detailpage.png Graphic file (type bmp)
+<detailpage.png>
+
+
+[7
+
+]
+File: usecase.png Graphic file (type bmp)
+<usecase.png>
+
+
+[8
+
+]
+
+[9]
+
+[10
+
+]
+File: systemStructure.jpg Graphic file (type bmp)
+<systemStructure.jpg>
+
+
+[11
+
+]
+
+[12]
+File: flow-ichiran.jpg Graphic file (type bmp)
+<flow-ichiran.jpg>
+
+
+[13
+
+]
+File: flow-touroku.jpg Graphic file (type bmp)
+<flow-touroku.jpg>
+
+
+[14
+
+]
+File: flow-henshu.jpg Graphic file (type bmp)
+<flow-henshu.jpg>
+
+
+[15
+
+]
+
+[16] (./sherfie_rep0711.aux)
+ ***********
+pLaTeX2e <2023-02-14>+1, based on
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+ ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3422 strings out of 473836
+ 51329 string characters out of 5731190
+ 461067 words of memory out of 5000000
+ 26657 multiletter control sequences out of 15000+600000
+ 571835 words of font info for 96 fonts, out of 8000000 for 9000
+ 934 hyphenation exceptions out of 8191
+ 57i,11n,65p,607b,330s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on sherfie_rep0711.dvi (17 pages, 30912 bytes).
