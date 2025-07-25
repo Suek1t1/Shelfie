@@ -25,6 +25,8 @@ class UserInfoForm(FlaskForm):
     # 生年月日：日付入力
     add_date  = DateField('追加日: ', format="%Y-%m-%d", render_kw={"placeholder": "yyyy/mm/dd"}, validators=[DataRequired('追加日を入力してください')])
     # テキストエリア：自由記述
-    note = TextAreaField('備考: ')
+    note = TextAreaField('感想,メモ: ')
+    # タグ：タグの追加（任意）
+    tag = StringField('タグ(任意): ')
     # ボタン
     submit = SubmitField('完了')

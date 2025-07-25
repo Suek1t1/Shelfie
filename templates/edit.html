@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h1>書籍編集</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.note.label }}{{ form.note(style="height:100px; width:150px")}}<br>
+        {{ form.tag.label }}{{ form.tag(size=20) }}<br>
+        {{ form.submit() }}
+    </form>
+{% endblock %}
