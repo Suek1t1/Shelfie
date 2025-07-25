@@ -60,11 +60,14 @@ class Book(db.Model):
 # 本棚
 class Shelf(db.Model):
     # テーブル名
-    __tablename__ = "tasks"
+    __tablename__ = "shelves"
 
     # 本棚ID
     shelf_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     book_id = db.Column(db.Integer, db.ForeignKey("books.book_id"), nullable=False)
+
+    # リレーション
+    book = db.relationship("Book", backref="shelves")
 
     # 表示用
     def __str__(self):
@@ -76,7 +79,7 @@ class Shelf(db.Model):
 # ==================================================
 
 
-@app.route("/<int:shelf_id>")
+@app.route("/")
 def index():
     # 本を取得
     shelves = Shelf.query.all()
