@@ -76,7 +76,7 @@ class Shelf(db.Model):
 # ==================================================
 
 
-@app.route("/")
+@app.route("/<int:shelf_id>")
 def index():
     # 本を取得
     shelves = Shelf.query.all()
@@ -116,7 +116,14 @@ def new_book():
     return render_template("new.html", form=form)
 
 
-@app.route("/edit", methods=["GET", "POST"])
+@app.route("/<int:book_id>/detail", methods=["GET"])
+def book_detail(book_id):
+    # 対象データ取得
+    book = Book.query.get(book_id)
+    return render_template("detail.html", book=book)
+
+
+@app.route("/<int:book_id>/edit", methods=["GET", "POST"])
 def edit(book_id):
     # 対象データ取得
     book = Book.query.get(book_id)
