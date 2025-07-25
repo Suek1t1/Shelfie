@@ -6,7 +6,7 @@
 \usepackage{amsmath}
 \usepackage{comment}
 
-\title{知能情報基礎演習II \\ 要件定義と基本設計家書の作成 \\ グループ番号7　Develoop}
+\title{知能情報基礎演習II \\ 要件定義、基本設計書、詳細設計書の作成 \\ グループ番号7　Develoop}
 \author{245429H　末吉 良多 \\ 245745J　知念 拓弥 \\ 245704B　武嶋 優海}
 \date{\today}
 
@@ -31,6 +31,18 @@ Shelfie
 
 「思い出深い本でも、泣く泣く手放さなければならない」\\
 こうした悩みを解決し、誰もが気軽に自分だけの本棚を持てるようにしたいと思い開発を始めました。
+
+\subsection{利用者のペルソナ}
+\textbf{田中美咲}
+\begin{itemize}
+    \item \textbf{基本情報：} 20歳、大学3年生（文学部）。東京都内のワンルームで一人暮らし。
+    \item \textbf{性格：} 感受性が豊かで、一人の時間を大切にする。自分の好きな作家や世界観には強いこだわりを持つ。
+    \item \textbf{ライフスタイル：} 古本屋巡りが趣味。情報収集は主にSNSの読書アカウントから。
+    \item \textbf{読書スタイル：} 装丁の美しい本を「モノ」として所有したい「紙の本派」。純文学や海外小説を好む。
+    \item \textbf{ITリテラシー：} アプリの利用に抵抗はなく、直感的でおしゃれなデザインを好む。
+    \item \textbf{課題：} 部屋が狭く本の置き場所に困っており、愛着のある本も手放さざるを得ない。
+    \item \textbf{インサイト：} 手放した本も含め、読んだ証を「自分だけの本棚」として視覚的にコレクションしたい。
+\end{itemize}
 
 \clearpage
 
@@ -167,7 +179,7 @@ Figmaで作成。そのスクリーンショットを添付する。
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \clearpage
 \subsection{ユースケース}
-MIROで作成。そのスクリーンショットを添付する
+MIROで作成。そのスクリーンショットを添付する。
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=80mm]{usecase.png}
@@ -209,10 +221,10 @@ MIROで作成。そのスクリーンショットを添付する
     \item フロントエンド\\
     HTML(Jinja2), CSS
     \item バックエンド\\
-    Python3
+    Python3.12.1
   \end{itemize}
   \item フレームワーク\\
-  Flask
+  Flask3.1.1
   \item 開発ツール\\
   VSC
   \item バージョン管理システム\\
@@ -234,6 +246,7 @@ MIROで作成。そのスクリーンショットを添付する
 \caption{システム構成図}
 \label{fig:func}
 \end{figure}
+
 
 \subsection{データベース設計}
 \subsubsection{ブックテーブル（book）}
@@ -277,14 +290,23 @@ MIROで作成。そのスクリーンショットを添付する
     \hline
     \textbf{カラム名} & \textbf{データ型} & \textbf{制約} & \textbf{説明} \\
     \hline\hline
-    shelf\_id & BIGINT & NOT NULL & 本棚の識別子 \\
+    shelf\_id & BIGINT & NOT NULL PRIMARY KEY& 本棚の識別子 \\
     \hline
-    book\_id & BIGINT & NOT NULL & 本の識別子 \\
+    book\_id & BIGINT & NOT NULL PRIMARY KEY& 本の識別子 \\
     \hline
   \end{tabular}
   \caption{本棚テーブル（shelf）}
   \label{tab:shelftable}
 \end{table}
+
+以下に、ER図を提示する。
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=70mm]{ER_diagram.jpg}
+\caption{ER図}
+\label{fig:func}
+\end{figure}
+
 
 \clearpage
 \subsection{各機能の処理フロー}
@@ -318,13 +340,13 @@ MIROで作成。そのスクリーンショットを添付する
 
 \section{グループでの分担内容と貢献度、MVP}%----------------------------------------------------------------------------------------------
 
-\subsection{詳細設計書におけるグループでの分担内容と貢献度}
+\subsection{各書類修正におけるグループでの分担内容と貢献度}
 \begin{itemize}
-    \item \textbf{245429H　末吉 良多(30\%)}開発環境・ツールと書籍一覧表示フローを作成。
-    \item \textbf{245745J　知念 拓弥(40\%)}システム構成図と書籍登録フローを作成。とりまとめ。
-    \item \textbf{245704B　武嶋 優海(30\%)}データベース設計と書籍編集フローを作成。
+    \item \textbf{245429H　末吉 良多(30\%)}システム構成図の修正
+    \item \textbf{245745J　知念 拓弥(30\%)}本棚テーブル修正、ER図の作成
+    \item \textbf{245704B　武嶋 優海(40\%)}ユースケース、処理フロー含む全体修正
 \end{itemize}
 
-\textbf{MVP : 245745J　知念拓弥}
+\textbf{MVP : 245704B　武嶋 優海}
 
 \end{document}
