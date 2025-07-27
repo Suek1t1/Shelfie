@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from forms import UserInfoForm
 from flask_migrate import Migrate
 import os
+from datetime import datetime
 
 # ==================================================
 # インスタンス生成
@@ -64,10 +65,10 @@ class Shelf(db.Model):
 
     # 本棚ID
     shelf_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    book_id = db.Column(db.Integer, db.ForeignKey("books.book_id"), nullable=False)
+    book_id = db.Column(db.Integer, db.ForeignKey("books.book_id"), nullable=True)
 
     # リレーション
-    book = db.relationship("Book", backref="shelves")
+    books = db.relationship("Book", backref="shelf", lazy=True)
 
     # 表示用
     def __str__(self):
@@ -81,6 +82,11 @@ class Shelf(db.Model):
 
 @app.route("/")
 def index():
+    # 本棚がなければ新しく作成
+    if Shelf.query.first() is None:
+        new_shelf = Shelf()
+        db.session.add(new_shelf)
+        db.session.commit()
     # 本を取得
     shelves = Shelf.query.all()
     books = Book.query.all()
@@ -90,30 +96,28 @@ def index():
 @app.route("/new", methods=["GET", "POST"])
 def new_book():
     # フォームの作成
-    form = UserInfoForm(request.form)
+    form = UserInfoForm()
     # POST
-    if request.method == "POST" and form.validate():
+    if request.method == "POST" and form.validate_on_submit():
         # 入力値取得
-        img = request.form["img"]
-        name = request.form["name"]
-        author = request.form["author"]
-        add_date = request.form["add_date"]
-        code = request.form["code"]
-        memo = request.form["memo"]
-        tag = request.form["tag"]
+        img_file = request.files["img"]
+        img_data = img_file.read() if img_file else None
+        name = form.name.data
+        author = form.author.data
+        add_date = datetime.now()  # 現在日時の設定
+        code = form.code.data
         # インスタンス生成
         book = Book(
-            img=img,  # バイナリデータの場合は file.read() などで渡す
+            img=img_data,  # バイナリデータの場合は file.read() などで渡す→完了
             name=name,
             author=author,
-            add_date=add_date,  # 日付型ならdatetime型で渡す
+            add_date=add_date,  # 日付型ならdatetime型で渡す→完了
             code=code,
-            memo=memo,
-            tag=tag,
         )
         # 登録
         db.session.add(book)
         db.session.commit()
+        flash("登録が完了しました！", "success")
         return redirect(url_for("index", form=form))
     # GET
     return render_template("new.html", form=form)
@@ -138,7 +142,6 @@ def edit(book_id):
         img = request.form["img"]
         name = request.form["name"]
         author = request.form["author"]
-        add_date = request.form["add_date"]
         code = request.form["code"]
         memo = request.form["memo"]
         tag = request.form["tag"]
@@ -146,7 +149,6 @@ def edit(book_id):
         book.img = img
         book.name = name
         book.author = author
-        book.add_date = add_date
         book.code = code
         book.memo = memo
         book.tag = tag
