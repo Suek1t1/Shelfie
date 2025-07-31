@@ -59,6 +59,8 @@ class Book(db.Model):
     add_date = db.Column(db.DateTime(255), nullable=False, default=func.now())
     # ISBNコード
     code = db.Column(db.Integer, nullable=False)
+    # ページ画像
+    page_img = db.Column(db.LargeBinary)
     # メモ
     memo = db.Column(db.String(511))
     # タグ
@@ -233,6 +235,9 @@ def edit(book_id):
         book.name = form.name.data
         book.author = form.author.data
         book.code = form.code.data
+        page_img_file = request.files["page_img"]
+        if page_img_file and page_img_file.filename:
+            book.page_img = page_img_file.read()
         book.memo = form.note.data
         book.tag = form.tag.data
         # 反映
@@ -268,6 +273,16 @@ def serve_image(book_id):
         )
     else:
         abort(404)
+@app.route("/page_image/<int:book_id>/")
+def serve_page_image(book_id):
+    book = Book.query.get_or_404(book_id)
+    if book.page_img:
+        return send_file(
+            io.BytesIO(book.page_img), mimetype="image/png", as_attachment=False
+        )
+    else:
+        abort(404)
+
 
 
 # 本棚を次に表示する用
@@ -300,7 +315,6 @@ def move_to_prev_shelf(shelf_id):
     else:
         flash("前の本棚がありません。", "error")
         return redirect(url_for("show_shelf", shelf_id=shelf_id))
-
 
 # 実行
 if __name__ == "__main__":
