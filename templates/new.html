@@ -5,13 +5,12 @@
 {% endblock %}
 
 {% block content %}
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" action="{{ url_for('new_book') }}" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         {{ form.img.label }}{{ form.img() }}<br>
         {{ form.name.label }}{{ form.name(size=20) }}<br>
         {{ form.author.label }}{{ form.author() }}<br>
         {{ form.code.label }}{{ form.code() }}<br>
-        {{ form.add_date.label }}{{ form.add_date() }}<br>
         {{ form.submit() }}
     </form>
 {% endblock %}

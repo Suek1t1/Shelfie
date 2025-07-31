@@ -1,10 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
-    <tbody>
-        <h2>{{ shelf_id }}</h2>
-        <img src="static/img/shelf" alt="shelf"/>
-        {% for item in items %}
-            <img src="/image/{{ item.id }}/" alt="画像 {{ item.id }}">
+<div id="shelf-container">
+  {% for shelf in shelves %}
+    <div class="shelf-block" {% if not loop.first %}style="display:none;"{% endif %}>
+        <h3>本棚ID:{{ shelf.shelf_id }}</h3>
+        {% if shelf.books %}
+        <ul>
+        {% for book in shelf.books %}
+            <li><img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}", height="120px"></li>
         {% endfor %}
-
+        </ul>
+        {% else %}
+            <p>この本棚には本がありません。</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+<div style="text-align:center; margin-top:1em;">
+  <button id="prev-btn">&lt;</button>
+  <span id="shelf-index">1</span> / {{ shelves|length }}
+  <button id="next-btn">&gt;</button>
+</div>
+<script>
+  const shelves = document.querySelectorAll('.shelf-block');
+  let current = 0;
+  document.getElementById('prev-btn').onclick = function() {
+    shelves[current].style.display = 'none';
+    current = (current - 1 + shelves.length) % shelves.length;
+    shelves[current].style.display = '';
+    document.getElementById('shelf-index').textContent = current + 1;
+  };
+  document.getElementById('next-btn').onclick = function() {
+    shelves[current].style.display = 'none';
+    current = (current + 1) % shelves.length;
+    shelves[current].style.display = '';
+    document.getElementById('shelf-index').textContent = current + 1;
+  };
+</script>
 {% endblock %}

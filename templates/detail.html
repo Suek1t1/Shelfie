@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>書籍詳細</h1>
+  <ul>
+    <li>タイトル: {{ book.name }}</li>
+    <li>著者: {{ book.author }}</li>
+    <li>追加日: {{ book.add_date.strftime('%Y-%m-%d') if book.add_date else '' }}</li>
+    <li>ISBNコード: {{ book.code }}</li>
+    <li>メモ: {{ book.memo }}</li>
+    <li>タグ: {{ book.tag }}</li>
+    <!-- 画像表示例（base64変換が必要な場合あり） -->
+    {# <img src="data:image/png;base64,{{ book.img | safe }}"> #}
+  </ul>
+{% endblock %}
