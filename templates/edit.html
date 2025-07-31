@@ -6,7 +6,15 @@
 
 {% block content %}
     <form method="POST" enctype="multipart/form-data">
-        {{ form.hidden_tag() }}
+        {{ form.hidden_tag() }}<br>
+        {% if book.img %}
+            <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="現在の画像" height="120">
+        {% endif %}
+        <br>
+        {{ form.img.label }}{{ form.img() }}<br>
+        {{ form.name.label }}{{ form.name(size=20) }}<br>
+        {{ form.author.label }}{{ form.author() }}<br>
+        {{ form.code.label }}{{ form.code() }}<br>
         {{ form.note.label }}{{ form.note(style="height:100px; width:150px")}}<br>
         {{ form.tag.label }}{{ form.tag(size=20) }}<br>
         {{ form.submit() }}
