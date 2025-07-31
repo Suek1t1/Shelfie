@@ -6,7 +6,7 @@ from wtforms.fields import (
     FileField,
     TextAreaField,
 )
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Optional
 from flask_wtf.file import FileAllowed, FileRequired
 
 
@@ -69,3 +69,13 @@ class EditBookForm(FlaskForm):
     tag = StringField("タグ(任意): ")
     # ボタン
     submit = SubmitField("完了")
+
+
+# 検索画面用のフォーム
+class SearchBookForm(FlaskForm):
+    # タイトル：文字列入力
+    search_word = StringField("検索(タイトル): ")
+    # ISBNコード：整数値入力
+    search_code = IntegerField("検索(ISBNコード): ", validators=[Optional()])
+    # ボタン
+    submit = SubmitField("実行")

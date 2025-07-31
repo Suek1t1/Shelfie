@@ -10,7 +10,7 @@ from flask import (
 )
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
-from forms import UserInfoForm, EditBookForm
+from forms import UserInfoForm, EditBookForm, SearchBookForm
 from flask_migrate import Migrate
 import os
 from datetime import datetime
