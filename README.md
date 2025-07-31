@@ -52,7 +52,6 @@
 | カラム名  | データ型 | 制約     | 説明        |
 | :------- | :----- | :------- | :--------- |
 | shelf_id | BIGINT | PRIMARY KEY, NOT NULL, AUTO_INCREMENT | 本棚の識別子 |
-| book_id  | BIGINT | FOREIGN KEY | 本の識別子(外部キー)   |
 
 ## ユースケース
 <img src="static/img/usecase.png" alt="ユースケース" width="600">
