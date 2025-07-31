@@ -10,7 +10,7 @@ from flask import (
 )
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
-from forms import UserInfoForm
+from forms import UserInfoForm, EditBookForm, SearchBookForm
 from flask_migrate import Migrate
 import os
 from datetime import datetime
@@ -143,8 +143,36 @@ def new_book():
     return render_template("new.html", form=form)
 
 
+# 書籍検索
+@app.route("/search", methods=["GET", "POST"])
+def search_book():
+    # フォームの作成
+    form = SearchBookForm()
+    books = [] #検索結果の格納
+
+    if form.validate_on_submit():
+        print("フォームは正常に送信されました。")
+        search_word = form.search_word.data
+        search_code = form.search_code.data
+
+        if search_word:
+            # タイトル(nameカラム)であいまい検索
+            search_pattern = f"%{search_word}%"
+            books = Book.query.filter(Book.name.like(search_pattern)).all()
+        
+        elif search_code:
+            # ISBNコード(codeカラム)で完全一致検索
+            books = Book.query.filter_by(code=search_code).all()
+
+        # 結果をsearch_results.htmlに渡して表示
+        return render_template('search_results.html', books=books)
+
+    # GETリクエストの場合は検索フォームを表示
+    return render_template('search.html', form=form)
+
+
 # 詳細ページ
-@app.route("/<int:book_id>/detail", methods=["GET"])
+@app.route("/<int:book_id>/detail", methods=["GET", "POST"])
 def book_detail(book_id):
     # 対象データ取得
     book = Book.query.get(book_id)
@@ -157,29 +185,42 @@ def edit(book_id):
     # 対象データ取得
     book = Book.query.get(book_id)
     # フォームの作成
-    form = UserInfoForm(request.form)
+    form = EditBookForm(obj=book)
+    # 編集画面で画像必須バリデータを外す
+    form.img.validators = [
+        v for v in form.img.validators if v.__class__.__name__ != "FileRequired"
+    ]
     # POST
-    if request.method == "POST" and form.validate():
-        # 入力値取得
-        img = request.form["img"]
-        name = request.form["name"]
-        author = request.form["author"]
-        code = request.form["code"]
-        memo = request.form["memo"]
-        tag = request.form["tag"]
-        # 登録
-        book.img = img
-        book.name = name
-        book.author = author
-        book.code = code
-        book.memo = memo
-        book.tag = tag
+    if request.method == "POST" and form.validate_on_submit():
+        # 入力値を登録
+        img_file = request.files["img"]
+        if img_file and img_file.filename:
+            book.img = img_file.read()
+        book.name = form.name.data
+        book.author = form.author.data
+        book.code = form.code.data
+        book.memo = form.note.data
+        book.tag = form.tag.data
         # 反映
         db.session.commit()
         # 一覧へ
         return redirect(url_for("index", form=form))
     # GET
-    return render_template("edit", form=form)
+    return render_template("edit.html", form=form, book=book)
+
+
+# 本の削除
+@app.route("/<int:book_id>/delete", methods=["POST"])
+def delete(book_id):
+    # 対象データ取得
+    book = Book.query.get(book_id)
+    if book:
+        db.session.delete(book)
+        db.session.commit()
+        flash("書籍を削除しました。", "success")
+    else:
+        flash("書籍が見つかりません。", "error")
+    return redirect(url_for("index"))
 
 # 本の削除
 @app.route("/<int:book_id>/delete", methods=["POST"])
