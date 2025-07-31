@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 
+{% block title %}
+    <h1>書籍詳細</h1>
+{% endblock %}
+
 {% block content %}
-  <h1>書籍詳細</h1>
   <ul>
     <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}", height="120px">
     <li>タイトル: {{ book.name }}</li>
     <li>著者: {{ book.author }}</li>
     <li>追加日: {{ book.add_date.strftime('%Y-%m-%d') if book.add_date else '' }}</li>
     <li>ISBNコード: {{ book.code }}</li>
-    <li>メモ: {{ book.memo }}</li>
+    <li>感想・メモ: {{ book.note }}</li>
     <li>タグ: {{ book.tag }}</li>
-    <li>感想: {{ book.note }}</li>
   </ul>
   <form method="POST" action="{{ url_for('edit', book_id=book.book_id) }}">
     <button type="submit" class="edit-button">編集</button>

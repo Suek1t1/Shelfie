@@ -58,8 +58,8 @@ class Book(db.Model):
     add_date = db.Column(db.DateTime(255), nullable=False, default=func.now())
     # ISBNコード
     code = db.Column(db.Integer, nullable=False)
-    # メモ
-    memo = db.Column(db.String(511))
+    # 感想、メモ
+    note = db.Column(db.String(511))
     # タグ
     tag = db.Column(db.String(10))
     # 本棚ID(外部キー)
@@ -171,7 +171,7 @@ def edit(book_id):
         book.name = form.name.data
         book.author = form.author.data
         book.code = form.code.data
-        book.memo = form.note.data
+        book.note = form.note.data
         book.tag = form.tag.data
         # 反映
         db.session.commit()
@@ -196,7 +196,7 @@ def delete(book_id):
 
 
 # 画像URL作成
-@app.route("/image/<int:book_id>/")
+@app.route("/image/<int:book_id>/", methods=["GET"])
 def serve_image(book_id):
     book = Book.query.get(book_id)
     if book and book.img:
@@ -207,6 +207,11 @@ def serve_image(book_id):
     else:
         abort(404)
 
+
+# 検索
+# @app.route("/search", methods=["GET", "POST"])
+# def search():
+#     return render_template("search.html", form=form)
 
 # 実行
 if __name__ == "__main__":
