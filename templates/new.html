@@ -1,16 +1,32 @@
 {% extends "base.html" %}
 
-{% block title %}
-    <h1>新規登録</h1>
-{% endblock %}
-
 {% block content %}
+<div class="container">
+    <h1>新規登録</h1>
     <form method="POST" action="{{ url_for('new_book') }}" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
-        {{ form.img.label }}{{ form.img() }}<br>
-        {{ form.name.label }}{{ form.name(size=20) }}<br>
-        {{ form.author.label }}{{ form.author() }}<br>
-        {{ form.code.label }}{{ form.code() }}<br>
-        {{ form.submit() }}
+
+        <div>
+            {{ form.img.label }}
+            {{ form.img() }}
+        </div>
+
+        <div>
+            {{ form.name.label }}
+            {{ form.name() }}
+        </div>
+
+        <div>
+            {{ form.author.label }}
+            {{ form.author() }}
+        </div>
+
+        <div>
+            {{ form.code.label }}
+            {{ form.code() }}
+        </div>
+
+        {{ form.submit(value='登録する') }}
     </form>
+</div>
 {% endblock %}

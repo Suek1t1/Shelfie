@@ -114,7 +114,7 @@ Shelfie
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \clearpage
 \subsection{ワイヤーフレーム}
-Figmaで作成。そのスクリーンショットを添付する。
+Figmaで作成。以下に添付します。
 
 \begin{figure}[htbp]
 \centering
@@ -179,7 +179,7 @@ Figmaで作成。そのスクリーンショットを添付する。
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \clearpage
 \subsection{ユースケース}
-MIROで作成。そのスクリーンショットを添付する。
+MIROで作成。以下に添付します。
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=80mm]{usecase.png}
@@ -269,13 +269,13 @@ MIROで作成。そのスクリーンショットを添付する。
     \hline
     add\_date & TIMESTAMP & NOTNULL, DEFAULT, CURRENT\_TIMESTAMP & 本の追加日 \\
     \hline
-    code & VARCHAR(14) & NOTNULL & ISBNコード \\
+    code & BIGINT & NOTNULL & ISBNコード \\
     \hline
     memo & VARCHAR(511) & NOTNULL & 本の感想等自由記述（任意） \\
     \hline
     tag & VARCHAR(10) & NOTNULL & 本のタグ（任意） \\
     \hline
-    message & VARCHAR(255) & NOTNULL & 完了メッセージ等の管理 \\
+    shelf\_id & BIGINT & FOREIGN KEY,NOT NULL & 本棚の識別子（外部キー） \\
     \hline
   \end{tabular}
   \caption{ブックテーブル（book）}
@@ -290,16 +290,14 @@ MIROで作成。そのスクリーンショットを添付する。
     \hline
     \textbf{カラム名} & \textbf{データ型} & \textbf{制約} & \textbf{説明} \\
     \hline\hline
-    shelf\_id & BIGINT & NOT NULL PRIMARY KEY& 本棚の識別子 \\
-    \hline
-    book\_id & BIGINT & NOT NULL PRIMARY KEY& 本の識別子 \\
+    shelf\_id & BIGINT & NOT NULL,PRIMARY KEY,AUTO\_INCREMENT& 本棚の識別子 \\
     \hline
   \end{tabular}
   \caption{本棚テーブル（shelf）}
   \label{tab:shelftable}
 \end{table}
 
-以下に、ER図を提示する。
+以下に、ER図を提示します。
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=70mm]{ER_diagram.jpg}

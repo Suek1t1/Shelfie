@@ -1,27 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}
-    <h1>検索結果</h1>
-{% endblock %}
-
 {% block content %}
+<div class="container">
+    <h1>検索結果</h1>
+
     {# 検索結果があった場合 #}
     {% if books %}
-        <p>{{ books|length }}件見つかりました。</p>
-        <hr>
-        {% for book in books %}
-            <p>
-                <strong>タイトル:</strong> {{ book.name }}<br>
-                <strong>著者:</strong> {{ book.author }}<br>
-                <strong>ISBNコード:</strong> {{ book.code }}
-            </p>
-            <hr>
-        {% endfor %}
+        <p class="results-summary">{{ books|length }}件見つかりました。</p>
+
+        <div class="results-list">
+            {% for book in books %}
+                <div class="result-item">
+                    <p><strong>タイトル:</strong> {{ book.name }}</p>
+                    <p><strong>著者:</strong> {{ book.author }}</p>
+                    <p><strong>ISBNコード:</strong> {{ book.code }}</p>
+                </div>
+            {% endfor %}
+        </div>
     
     {# 検索結果がなかった場合 #}
     {% else %}
-        <p>該当する書籍は見つかりませんでした。</p>
+        <p class="no-results">該当する書籍は見つかりませんでした。</p>
     {% endif %}
 
-    <a href="{{ url_for('search_book') }}">検索画面に戻る</a>
+    <a class="btn-back" href="{{ url_for('search_book') }}">検索画面に戻る</a>
+</div>
 {% endblock %}

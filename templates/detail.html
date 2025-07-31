@@ -1,19 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>書籍詳細</h1>
-  <ul>
-    <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}", height="120px">
-    <li>タイトル: {{ book.name }}</li>
-    <li>著者: {{ book.author }}</li>
-    <li>追加日: {{ book.add_date.strftime('%Y-%m-%d') if book.add_date else '' }}</li>
-    <li>ISBNコード: {{ book.code }}</li>
-    <li>メモ: {{ book.memo }}</li>
-    <li>タグ: {{ book.tag }}</li>
-    <li>感想: {{ book.note }}</li>
-  </ul>
-  <form method="POST" action="{{ url_for('edit', book_id=book.book_id) }}">
-    <button type="submit" class="edit-button">編集</button>
-    <button type="submit" class="delete-button" formaction="{{ url_for('delete', book_id=book.book_id) }}">削除</button>
-  </form>
+  <div class="book-detail-container">
+    <h1>書籍詳細</h1>
+    
+    <div class="image-container">
+    <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}" height="180px">  
+    {% if book.page_img %}
+      <img src="{{ url_for('serve_page_image', book_id=book.book_id) }}" alt="{{ book.name }}" height="180px"> 
+    {% endif %}
+    </div>
+    
+    <ul class="book-info-list">
+      <li><strong>タイトル:</strong> {{ book.name }}</li>
+      <li><strong>著者:</strong> {{ book.author }}</li>
+      <li><strong>追加日:</strong> {{ book.add_date.strftime('%Y-%m-%d') if book.add_date else '' }}</li>
+      <li><strong>ISBN:</strong> {{ book.code }}</li>
+      <li><strong>タグ:</strong> {{ book.tag }}</li>
+      <li><strong>感想:</strong> {{ book.memo }}</li>
+    </ul>
+
+    <div class="action-buttons">
+      <form method="POST" action="{{ url_for('edit', book_id=book.book_id) }}" style="display: inline;">
+        <button type="submit" class="edit-button">編集</button>
+      </form>
+      <form method="POST" action="{{ url_for('delete', book_id=book.book_id) }}" style="display: inline;">
+        <button type="submit" class="delete-button">削除</button>
+      </form>
+    </div>
+  </div>
 {% endblock %}
