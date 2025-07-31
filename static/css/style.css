@@ -1,45 +1,146 @@
-/* 本棚の土台となるコンテナ */
-.shelf-container {
-  position: relative; /* 子要素を絶対配置する際の基準点にする */
-  width: 100%; /* 親要素の幅いっぱいに広げる（最大幅は指定した方が良い） */
-  max-width: 1000px; /* 例えば最大幅を1000pxに */
-  margin: 0 auto; /* 中央揃え */
-
-  aspect-ratio: 1000 / 950;
-
-  /* 背景に本棚の画像を指定 */
-  background-image: url('/static/img/shelf2.png');  /* 画像のパスを正しく指定 */
-  background-size: contain;                         /* コンテナに収まるように背景を調整 */
-  background-repeat: no-repeat;
+/* --- ヘッダー --- */
+header {
+  display: flex; /* Flexboxを有効化 */
+  justify-content: space-between; /* 両端に要素を配置 */
+  align-items: center; /* 要素を垂直方向中央に揃える */
+  padding: 10px 30px; /* 上下の余白10px, 左右の余白30px */
+  border-bottom: 2px solid black; /* コンテンツとの境界線 */
+  background-color: #f8f9fa; /* ヘッダーの背景色（任意で変更可）*/
 }
 
-/* 本棚に置く本の画像 */
-.book-on-shelf {
-  position: absolute;                               /* 親要素を基準に絶対配置する */
-  height: 22%;                                      /* 本の高さを本棚の高さに対する割合で指定 */
-  width: auto;                                      /* 幅は高さに応じて自動調整 */
-  transform: translateX(-50%); /* 中央を基準に配置するための調整 */
+/* --- ロゴ --- */
+.logo-image {
+  height: 80px; /* ロゴの高さを指定 */
+  width: auto; /* 幅は自動で調整 */
 }
 
-/*各本の位置を :nth-child を使って個別に指定*/
+/* --- ナビゲーションコンテナ --- */
+.main-nav {
+  display: flex; /* ナビゲーション項目を横並びに */
+  gap: 30px; /* 各項目間のスペース */
+}
 
-/* --- 1段目（一番上）--- */
-.book-on-shelf:nth-child(1) { bottom: 76.5%; left: 20%; }
-.book-on-shelf:nth-child(2) { bottom: 76.5%; left: 40%; }
-.book-on-shelf:nth-child(3) { bottom: 76.5%; left: 60%; }
-.book-on-shelf:nth-child(4) { bottom: 76.5%; left: 80%; }
+/* --- ナビゲーションリンク（アイコンとテキストの親要素） --- */
+.main-nav .nav-link {
+  display: flex;
+  flex-direction: column; /* アイコンとテキストを縦に並べる */
+  align-items: center; /* 中央揃えにする */
+  text-decoration: none; /* リンクの下線を消す */
+  color: #333; /* 文字色 */
+  font-size: 14px;
+  font-weight: bold;
+}
 
-/* --- 2段目 --- */
-.book-on-shelf:nth-child(5) { bottom: 52%; left: 20%; }
-.book-on-shelf:nth-child(6) { bottom: 52%; left: 40%; }
-.book-on-shelf:nth-child(7) { bottom: 52%; left: 60%; }
-.book-on-shelf:nth-child(8) { bottom: 52%; left: 80%; }
+/* --- ナビゲーションのアイコン --- */
+.main-nav .nav-link img {
+  width: 60px; /* アイコンの幅 */
+  height: 60px; /* アイコンの高さ */
+  margin-bottom: 5px; /* アイコンとテキストの間の余白 */
+}
 
-/* --- 3段目 --- */
-.book-on-shelf:nth-child(9) { bottom: 27.5%; left: 20%; }
-.book-on-shelf:nth-child(10) { bottom: 27.5%; left: 40%; }
-/* ...以下、16冊目まで同様に続く... */
+/* --- リンクにマウスを乗せた時のスタイル --- */
+.main-nav .nav-link:hover {
+  opacity: 0.7; /* 少し透明にする */
+  color: #000000; /* 文字色を青っぽく変更 */
+}
 
-/* --- 4段目（一番下）--- */
-.book-on-shelf:nth-child(13) { bottom: 3%; left: 20%; }
-.book-on-shelf:nth-child(14) { bottom: 3%; left: 40%; }
+/* --- アクティブなページのリンクスタイル --- */
+.main-nav .nav-link.active {
+  color: #000000; /* アクティブなリンクの文字色を濃くする */
+}
+
+
+/* --- 本棚ページのスタイル --- */
+
+/* 本を陳列するグリッド */
+.bookshelf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10% 10%;
+  padding: 7% 8%;
+  list-style: none;
+  margin-bottom: 0; /* ulのデフォルトマージンをリセット */
+}
+
+/* 各グリッドセル(li)をFlexboxコンテナにする */
+.bookshelf-grid li {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* 個々の本のスタイル */
+.bookshelf-grid img {
+  height: 310px;
+  width: auto;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.bookshelf-grid img:hover {
+  transform: scale(1.05);
+}
+
+
+
+/* 本がない時のメッセージ */
+.no-books-message {
+  text-align: center;
+  color: #888;
+  padding: 150px 0;
+}
+
+
+/* --- 本のグリッドを配置するコンテナ --- */
+.book-grid-container {
+  max-width: 1000px; /* 本を並べるエリアの最大幅 */
+  margin: 2em auto; /* 中央揃え */
+  padding-top: 50px; /* 背景の棚の上部との余白 */
+}
+
+/* 本を陳列するグリッド */
+.bookshelf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 82px 40px; /* 本の間のすき間（行間・列間）                */
+  padding: 0 20px;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+    
+/* 本棚背景を適用したいページ用のID */
+body#bookshelf-page {
+    /* 背景画像を指定 */
+    background-image: url('../img/shelf2.png');
+    /* 画像全体が見えるように調整 */
+    background-size: contain;
+    /* 画像の繰り返しを禁止 */
+    background-repeat: no-repeat;
+    /* 画像の位置を調整 */
+    background-position: center 290px;
+    /* スクロールと一緒に背景も動くようにする */
+    background-attachment: scroll;
+    /* ★変更点: ページの最小の高さを設定 */
+    min-height: 1200px; /* この数値を調整して、画像全体が収まるようにしてください */
+}
+
+/* --- 本棚ページのコンテンツ用コンテナ --- */
+.bookshelf-content {
+  /* コンテンツの背景に半透明の黒を敷き、文字を読みやすくする */
+  /*background-color: rgba(0, 0, 0, 0.4);*/
+  border-radius: 10px;
+  padding: 2em;
+  margin: 4em auto; /* 上下の余白と中央揃え */
+  max-width: 1200px; /* コンテナの最大幅 */
+}
+
+/* 本棚のタイトル */
+.bookshelf-title {
+  color: rgb(14, 13, 13); /* 文字色を白に */
+    --title-font-size: 5rem;
+  text-align: center;
+  margin-bottom: 1.5em;
+}

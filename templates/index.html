@@ -1,20 +1,24 @@
 {% extends "base.html" %}
+{% set body_id = 'bookshelf-page' %}
 {% block content %}
-<div id="shelf-container">
-  {% for shelf in shelves %}
-    <div class="shelf-block" {% if not loop.first %}style="display:none;"{% endif %}>
-        <h3>本棚ID:{{ shelf.shelf_id }}</h3>
-        {% if shelf.books %}
-        <ul>
-        {% for book in shelf.books %}
-            <li><img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}", height="120px"></li>
-        {% endfor %}
-        </ul>
-        {% else %}
-            <p>この本棚には本がありません。</p>
-        {% endif %}
-    </div>
-    {% endfor %}
+
+
+<div class="bookshelf-content">
+
+  <h3 class="bookshelf-title">本棚{{ shelves[0].shelf_id if shelves else '' }}</h3>
+
+  {% if shelves and shelves[0].books %}
+    <ul class="bookshelf-grid">
+      {% for book in shelves[0].books %}
+        <a href="{{ url_for('book_detail', book_id=book.book_id) }}">
+          <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}", class="book-on-shelf", height="120px">
+        </a>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="no-books-message" style="color: white;">この本棚には本がありません。</p>
+  {% endif %}
+
 </div>
 <div style="text-align:center; margin-top:1em;">
   <button id="prev-btn">&lt;</button>
@@ -37,4 +41,6 @@
     document.getElementById('shelf-index').textContent = current + 1;
   };
 </script>
+
+
 {% endblock %}

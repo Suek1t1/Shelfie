@@ -181,6 +181,18 @@ def edit(book_id):
     # GET
     return render_template("edit", form=form)
 
+# 本の削除
+@app.route("/<int:book_id>/delete", methods=["POST"])
+def delete(book_id):
+    # 対象データ取得
+    book = Book.query.get(book_id)
+    if book:
+        db.session.delete(book)
+        db.session.commit()
+        flash("書籍を削除しました。", "success")
+    else:
+        flash("書籍が見つかりません。", "error")
+    return redirect(url_for("index"))
 
 # 画像URL作成
 @app.route("/image/<int:book_id>/")
