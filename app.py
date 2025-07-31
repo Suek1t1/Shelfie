@@ -52,6 +52,12 @@ class Book(db.Model):
     memo = db.Column(db.String(511))
     # タグ
     tag = db.Column(db.String(10))
+    # 本棚ID(外部キー)
+    shelf_id = db.Column(
+        db.Integer,
+        db.ForeignKey("shelves.shelf_id", name="fk_book_shelf"),
+        nullable=False,
+    )
 
     # 表示用
     def __str__(self):
@@ -65,7 +71,7 @@ class Shelf(db.Model):
 
     # 本棚ID
     shelf_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    book_id = db.Column(db.Integer, db.ForeignKey("books.book_id"), nullable=True)
+    # book_id = db.Column(db.Integer, db.ForeignKey("books.book_id"), nullable=True)
 
     # リレーション
     books = db.relationship("Book", backref="shelf", lazy=True)
@@ -80,6 +86,7 @@ class Shelf(db.Model):
 # ==================================================
 
 
+# 一覧
 @app.route("/")
 def index():
     # 本棚がなければ新しく作成
@@ -93,6 +100,7 @@ def index():
     return render_template("index.html", shelves=shelves, books=books)
 
 
+# 新規登録
 @app.route("/new", methods=["GET", "POST"])
 def new_book():
     # フォームの作成
@@ -106,6 +114,7 @@ def new_book():
         author = form.author.data
         add_date = datetime.now()  # 現在日時の設定
         code = form.code.data
+        first_shelf = Shelf.query.first()
         # インスタンス生成
         book = Book(
             img=img_data,  # バイナリデータの場合は file.read() などで渡す→完了
@@ -113,6 +122,7 @@ def new_book():
             author=author,
             add_date=add_date,  # 日付型ならdatetime型で渡す→完了
             code=code,
+            shelf_id=first_shelf.shelf_id,  # 紐づけ
         )
         # 登録
         db.session.add(book)
@@ -123,6 +133,7 @@ def new_book():
     return render_template("new.html", form=form)
 
 
+# 詳細ページ
 @app.route("/<int:book_id>/detail", methods=["GET"])
 def book_detail(book_id):
     # 対象データ取得
@@ -130,6 +141,7 @@ def book_detail(book_id):
     return render_template("detail.html", book=book)
 
 
+# 編集ページ
 @app.route("/<int:book_id>/edit", methods=["GET", "POST"])
 def edit(book_id):
     # 対象データ取得
@@ -160,5 +172,6 @@ def edit(book_id):
     return render_template("edit", form=form)
 
 
+# 実行
 if __name__ == "__main__":
     app.run()

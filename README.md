@@ -36,22 +36,23 @@
 
 ## データベース設計
 ### ブックテーブル（book）
-| カラム名    | データ型           | 制約                                 | 説明               |
-| :---------- | :----------------- | :----------------------------------- | :----------------- |
-| book_id     | BIGINT             | PRIMARY KEY, AUTO_INCREMENT          | 本の識別子         |
-| img         | BLOB               | NOT NULL                             | 本の表紙、ページ   |
-| name        | VARCHAR(255)       | NOT NULL                             | 本のタイトル       |
-| author      | VARCHAR(50)        | NOT NULL                             | 本の著者           |
-| add_date    | TIMESTAMP          | NOT NULL, DEFAULT CURRENT_TIMESTAMP  | 本の追加日         |
-| code        | BIGINT        | NOT NULL                             | ISBNコード         |
-| memo        | VARCHAR(511)       | NOT NULL                             | 本の感想等自由記述（任意） |
-| tag         | VARCHAR(10)        | NOT NULL                             | 本のタグ（任意）   |
+| カラム名 | データ型       | 制約                                 | 説明               |
+| :------ | :----------  | :----------------------------------- | :-----------------    |
+| book_id  | BIGINT       | PRIMARY KEY, AUTO_INCREMENT         | 本の識別子              |
+| img      | BLOB         | NOT NULL                            | 本の表紙、ページ          |
+| name     | VARCHAR(255) | NOT NULL                            | 本のタイトル             |
+| author   | VARCHAR(50)  | NOT NULL                            | 本の著者                |
+| add_date | TIMESTAMP    | NOT NULL, DEFAULT CURRENT_TIMESTAMP | 本の追加日              |
+| code     | BIGINT       | NOT NULL                            | ISBNコード              |
+| memo     | VARCHAR(511) | NOT NULL                            | 本の感想等自由記述（任意） |
+| tag      | VARCHAR(10)  | NOT NULL                            | 本のタグ（任意）         |
+| shelf_id | BIGINT       | FOREIGN KEY, NOT NULL               | 本棚の識別子(外部キー) |
 
 ### 本棚テーブル（shelf）
-| カラム名    | データ型           | 制約                                 | 説明               |
-| :---------- | :----------------- | :----------------------------------- | :----------------- |
-| shelf_id     | BIGINT             | NOT NULL          | 本棚の識別子         |
-| book_id         | BIGINT               | NOT NULL                             | 本の識別子   |
+| カラム名  | データ型 | 制約     | 説明        |
+| :------- | :----- | :------- | :--------- |
+| shelf_id | BIGINT | PRIMARY KEY, NOT NULL, AUTO_INCREMENT | 本棚の識別子 |
+| book_id  | BIGINT | FOREIGN KEY | 本の識別子(外部キー)   |
 
 ## ユースケース
 <img src="static/img/usecase.png" alt="ユースケース" width="600">
@@ -134,3 +135,11 @@ shelfie/
   - 機能を実装
 - デザイン
   - りょうたにお任せ
+
+## たくやの変更点
+
+- 本の追加日登録フォームを削除
+  - 追加日は本を作成したときに現在日時が設定されるように変更
+- base.htmlにbootstrapのflashメッセージを追加
+  - デザインに影響があるかも
+- 本の外部キーに本棚IDを追加
