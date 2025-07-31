@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h1>検索結果</h1>
+{% endblock %}
+
+{% block content %}
+    {# 検索結果があった場合 #}
+    {% if books %}
+        <p>{{ books|length }}件見つかりました。</p>
+        <hr>
+        {% for book in books %}
+        <div class="search-item" style="display: flex; align-items: center; gap: 16px; margin-bottom: 1em;">
+            <p>
+                <a href="{{ url_for('book_detail', book_id=book.book_id) }}">
+                    <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}" height="120px">
+                </a>
+                <div>
+                <strong>タイトル:</strong> {{ book.name }}<br>
+                <strong>著者:</strong> {{ book.author }}<br>
+                <strong>ISBNコード:</strong> {{ book.code }}
+                </div>
+            </p>
+            </div>
+            <hr>
+        {% endfor %}
+    
+    {# 検索結果がなかった場合 #}
+    {% else %}
+        <p>該当する書籍は見つかりませんでした。</p>
+    {% endif %}
+
+    <a href="{{ url_for('search_book') }}">検索画面に戻る</a>
+{% endblock %}

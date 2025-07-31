@@ -143,6 +143,34 @@ def new_book():
     return render_template("new.html", form=form)
 
 
+# 書籍検索
+@app.route("/search", methods=["GET", "POST"])
+def search_book():
+    # フォームの作成
+    form = SearchBookForm()
+    books = []  # 検索結果の格納
+
+    if form.validate_on_submit():
+        print("フォームは正常に送信されました。")
+        search_word = form.search_word.data
+        search_code = form.search_code.data
+
+        if search_word:
+            # タイトル(nameカラム)であいまい検索
+            search_pattern = f"%{search_word}%"
+            books = Book.query.filter(Book.name.like(search_pattern)).all()
+
+        elif search_code:
+            # ISBNコード(codeカラム)で完全一致検索
+            books = Book.query.filter_by(code=search_code).all()
+
+        # 結果をsearch_results.htmlに渡して表示
+        return render_template("search_results.html", books=books)
+
+    # GETリクエストの場合は検索フォームを表示
+    return render_template("search.html", form=form)
+
+
 # 詳細ページ
 @app.route("/<int:book_id>/detail", methods=["GET", "POST"])
 def book_detail(book_id):
@@ -207,11 +235,6 @@ def serve_image(book_id):
     else:
         abort(404)
 
-
-# 検索
-# @app.route("/search", methods=["GET", "POST"])
-# def search():
-#     return render_template("search.html", form=form)
 
 # 実行
 if __name__ == "__main__":
