@@ -10,7 +10,7 @@ from flask import (
 )
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
-from forms import UserInfoForm
+from forms import UserInfoForm, EditBookForm
 from flask_migrate import Migrate
 import os
 from datetime import datetime
@@ -58,8 +58,8 @@ class Book(db.Model):
     add_date = db.Column(db.DateTime(255), nullable=False, default=func.now())
     # ISBNコード
     code = db.Column(db.Integer, nullable=False)
-    # メモ
-    memo = db.Column(db.String(511))
+    # 感想、メモ
+    note = db.Column(db.String(511))
     # タグ
     tag = db.Column(db.String(10))
     # 本棚ID(外部キー)
@@ -144,7 +144,7 @@ def new_book():
 
 
 # 詳細ページ
-@app.route("/<int:book_id>/detail", methods=["GET"])
+@app.route("/<int:book_id>/detail", methods=["GET", "POST"])
 def book_detail(book_id):
     # 対象データ取得
     book = Book.query.get(book_id)
@@ -157,33 +157,46 @@ def edit(book_id):
     # 対象データ取得
     book = Book.query.get(book_id)
     # フォームの作成
-    form = UserInfoForm(request.form)
+    form = EditBookForm(obj=book)
+    # 編集画面で画像必須バリデータを外す
+    form.img.validators = [
+        v for v in form.img.validators if v.__class__.__name__ != "FileRequired"
+    ]
     # POST
-    if request.method == "POST" and form.validate():
-        # 入力値取得
-        img = request.form["img"]
-        name = request.form["name"]
-        author = request.form["author"]
-        code = request.form["code"]
-        memo = request.form["memo"]
-        tag = request.form["tag"]
-        # 登録
-        book.img = img
-        book.name = name
-        book.author = author
-        book.code = code
-        book.memo = memo
-        book.tag = tag
+    if request.method == "POST" and form.validate_on_submit():
+        # 入力値を登録
+        img_file = request.files["img"]
+        if img_file and img_file.filename:
+            book.img = img_file.read()
+        book.name = form.name.data
+        book.author = form.author.data
+        book.code = form.code.data
+        book.note = form.note.data
+        book.tag = form.tag.data
         # 反映
         db.session.commit()
         # 一覧へ
         return redirect(url_for("index", form=form))
     # GET
-    return render_template("edit", form=form)
+    return render_template("edit.html", form=form, book=book)
+
+
+# 本の削除
+@app.route("/<int:book_id>/delete", methods=["POST"])
+def delete(book_id):
+    # 対象データ取得
+    book = Book.query.get(book_id)
+    if book:
+        db.session.delete(book)
+        db.session.commit()
+        flash("書籍を削除しました。", "success")
+    else:
+        flash("書籍が見つかりません。", "error")
+    return redirect(url_for("index"))
 
 
 # 画像URL作成
-@app.route("/image/<int:book_id>/")
+@app.route("/image/<int:book_id>/", methods=["GET"])
 def serve_image(book_id):
     book = Book.query.get(book_id)
     if book and book.img:
@@ -194,6 +207,11 @@ def serve_image(book_id):
     else:
         abort(404)
 
+
+# 検索
+# @app.route("/search", methods=["GET", "POST"])
+# def search():
+#     return render_template("search.html", form=form)
 
 # 実行
 if __name__ == "__main__":
