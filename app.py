@@ -1,10 +1,20 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import (
+    Flask,
+    render_template,
+    request,
+    redirect,
+    url_for,
+    flash,
+    send_file,
+    abort,
+)
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from forms import UserInfoForm
 from flask_migrate import Migrate
 import os
 from datetime import datetime
+import io
 
 # ==================================================
 # インスタンス生成
@@ -170,6 +180,19 @@ def edit(book_id):
         return redirect(url_for("index", form=form))
     # GET
     return render_template("edit", form=form)
+
+
+# 画像URL作成
+@app.route("/image/<int:book_id>/")
+def serve_image(book_id):
+    book = Book.query.get(book_id)
+    if book and book.img:
+        # 画像形式はpngのみ対応
+        return send_file(
+            io.BytesIO(book.img), mimetype="image/png", as_attachment=False
+        )
+    else:
+        abort(404)
 
 
 # 実行

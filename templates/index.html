@@ -7,7 +7,7 @@
         {% if shelf.books %}
         <ul>
         {% for book in shelf.books %}
-            <li>{{ book.name }}</li>
+            <li><img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}", height="120px"></li>
         {% endfor %}
         </ul>
         {% else %}
