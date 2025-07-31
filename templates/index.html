@@ -6,7 +6,6 @@
   {# shelfが未定義の場合はshelves[0]を使う #}
   {% set current_shelf = shelf if shelf is defined and shelf else (shelves[0] if shelves else None) %}
 
-
   {% if current_shelf and current_shelf.books %}
     <ul class="bookshelf-grid">
       {% for book in current_shelf.books %}
