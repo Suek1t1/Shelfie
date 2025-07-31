@@ -2,45 +2,70 @@
 {% set body_id = 'bookshelf-page' %}
 {% block content %}
 
+<div class="bookshelf-container">
 
-<div class="bookshelf-content">
+  <h3 class="bookshelf-title">本棚</h3>
 
-  <h3 class="bookshelf-title">本棚{{ shelves[0].shelf_id if shelves else '' }}</h3>
-
-  {% if shelves and shelves[0].books %}
-    <ul class="bookshelf-grid">
-      {% for book in shelves[0].books %}
-        <a href="{{ url_for('book_detail', book_id=book.book_id) }}">
-          <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}", class="book-on-shelf", height="120px">
-        </a>
-      {% endfor %}
-    </ul>
+  {% if shelves %}
+    {% for shelf in shelves %}
+      <div class="shelf-block" {% if not loop.first %}style="display: none;"{% endif %}>
+        {% if shelf.books %}
+          {% for row in shelf.books|batch(4) %}
+            <div class="book-row-wrapper">
+              <ul class="bookshelf-grid">
+                {% for book in row %}
+                  <li>
+                    <a href="{{ url_for('book_detail', book_id=book.book_id) }}">
+                      <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}" class="book-on-shelf">
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+              <div class="shelf-image-container">
+                <img src="{{ url_for('static', filename='img/shelf3.png') }}" alt="棚板" class="shelf-image">
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="no-books-message">この本棚には本がありません。</p>
+        {% endif %}
+      </div>
+    {% endfor %}
   {% else %}
-    <p class="no-books-message" style="color: white;">この本棚には本がありません。</p>
+    <p class="no-books-message">利用可能な本棚がありません。</p>
   {% endif %}
 
 </div>
-<div style="text-align:center; margin-top:1em;">
+
+<div class="pagination-controls">
   <button id="prev-btn">&lt;</button>
-  <span id="shelf-index">1</span> / {{ shelves|length }}
+  <span id="shelf-index">1</span> / <span>{{ shelves|length }}</span>
   <button id="next-btn">&gt;</button>
 </div>
+
 <script>
   const shelves = document.querySelectorAll('.shelf-block');
+  const shelfIndexSpan = document.getElementById('shelf-index');
   let current = 0;
-  document.getElementById('prev-btn').onclick = function() {
-    shelves[current].style.display = 'none';
-    current = (current - 1 + shelves.length) % shelves.length;
-    shelves[current].style.display = '';
-    document.getElementById('shelf-index').textContent = current + 1;
-  };
-  document.getElementById('next-btn').onclick = function() {
-    shelves[current].style.display = 'none';
-    current = (current + 1) % shelves.length;
-    shelves[current].style.display = '';
-    document.getElementById('shelf-index').textContent = current + 1;
-  };
-</script>
 
+  if (shelves.length > 1) {
+    document.getElementById('prev-btn').onclick = function() {
+      shelves[current].style.display = 'none';
+      current = (current - 1 + shelves.length) % shelves.length;
+      shelves[current].style.display = 'block';
+      shelfIndexSpan.textContent = current + 1;
+    };
+
+    document.getElementById('next-btn').onclick = function() {
+      shelves[current].style.display = 'none';
+      current = (current + 1) % shelves.length;
+      shelves[current].style.display = 'block';
+      shelfIndexSpan.textContent = current + 1;
+    };
+  } else {
+    // 棚が1つ以下の場合はページネーションを非表示
+    document.querySelector('.pagination-controls').style.display = 'none';
+  }
+</script>
 
 {% endblock %}

@@ -1,146 +1,203 @@
-/* --- ヘッダー --- */
+/* --- ヘッダー（既存のスタイルはそのまま） --- */
 header {
-  display: flex; /* Flexboxを有効化 */
-  justify-content: space-between; /* 両端に要素を配置 */
-  align-items: center; /* 要素を垂直方向中央に揃える */
-  padding: 10px 30px; /* 上下の余白10px, 左右の余白30px */
-  border-bottom: 2px solid black; /* コンテンツとの境界線 */
-  background-color: #f8f9fa; /* ヘッダーの背景色（任意で変更可）*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  border-bottom: 2px solid black;
+  background-color: #f8f9fa;
 }
-
-/* --- ロゴ --- */
 .logo-image {
-  height: 80px; /* ロゴの高さを指定 */
-  width: auto; /* 幅は自動で調整 */
+  height: 80px;
+  width: auto;
 }
-
-/* --- ナビゲーションコンテナ --- */
 .main-nav {
-  display: flex; /* ナビゲーション項目を横並びに */
-  gap: 30px; /* 各項目間のスペース */
+  display: flex;
+  gap: 30px;
 }
-
-/* --- ナビゲーションリンク（アイコンとテキストの親要素） --- */
 .main-nav .nav-link {
   display: flex;
-  flex-direction: column; /* アイコンとテキストを縦に並べる */
-  align-items: center; /* 中央揃えにする */
-  text-decoration: none; /* リンクの下線を消す */
-  color: #333; /* 文字色 */
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
   font-size: 14px;
   font-weight: bold;
 }
-
-/* --- ナビゲーションのアイコン --- */
 .main-nav .nav-link img {
-  width: 60px; /* アイコンの幅 */
-  height: 60px; /* アイコンの高さ */
-  margin-bottom: 5px; /* アイコンとテキストの間の余白 */
+  width: 60px;
+  height: 60px;
+  margin-bottom: 5px;
 }
-
-/* --- リンクにマウスを乗せた時のスタイル --- */
 .main-nav .nav-link:hover {
-  opacity: 0.7; /* 少し透明にする */
-  color: #000000; /* 文字色を青っぽく変更 */
+  opacity: 0.7;
+  color: #000000;
 }
-
-/* --- アクティブなページのリンクスタイル --- */
 .main-nav .nav-link.active {
-  color: #000000; /* アクティブなリンクの文字色を濃くする */
+  color: #000000;
 }
 
-
-/* --- 本棚ページのスタイル --- */
-
-/* 本を陳列するグリッド */
+/* --- 本棚ページのスタイル ------------------------------------------------- */
+body#bookshelf-page {
+  background-color: #f0f0f0;
+}
+.bookshelf-container {
+  max-width: 1100px;
+  margin: 2em auto;
+  padding: 0 20px;
+}
+.bookshelf-title {
+  color: #333;
+  text-align: center;
+  margin-bottom: 1.5em;
+  font-size: 2.5rem;
+}
+.book-row-wrapper {
+  margin-bottom: 2em;
+}
 .bookshelf-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10% 10%;
-  padding: 7% 8%;
+  gap: 40px;
+  padding: 0 5%;
   list-style: none;
-  margin-bottom: 0; /* ulのデフォルトマージンをリセット */
+  margin: 0;
+  align-items: end;
 }
-
-/* 各グリッドセル(li)をFlexboxコンテナにする */
 .bookshelf-grid li {
   display: flex;
-  align-items: flex-end;
   justify-content: center;
+  align-items: flex-end;
 }
-
-/* 個々の本のスタイル */
-.bookshelf-grid img {
-  height: 310px;
-  width: auto;
-  max-height: 100%;
+.bookshelf-grid .book-on-shelf {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
   object-fit: contain;
   border-radius: 4px;
   transition: transform 0.2s ease-in-out;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
 }
-
-.bookshelf-grid img:hover {
-  transform: scale(1.05);
+.bookshelf-grid .book-on-shelf:hover {
+  transform: scale(1.05) translateY(-10px);
 }
-
-
-
-/* 本がない時のメッセージ */
+.shelf-image-container {
+  margin-top: -20px;
+  text-align: center;
+  position: relative;
+  z-index: -1;
+}
+.shelf-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.pagination-controls {
+  text-align: center;
+  margin: 2em 0 3em;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.pagination-controls button {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 15px;
+  transition: background-color 0.2s;
+}
+.pagination-controls button:hover {
+  background-color: #333;
+}
 .no-books-message {
   text-align: center;
-  color: #888;
-  padding: 150px 0;
+  color: #666;
+  padding: 100px 0;
+  font-size: 1.2rem;
 }
 
+/* --- 書籍検索ページのスタイル --------------------------------------------- */
 
-/* --- 本のグリッドを配置するコンテナ --- */
-.book-grid-container {
-  max-width: 1000px; /* 本を並べるエリアの最大幅 */
-  margin: 2em auto; /* 中央揃え */
-  padding-top: 50px; /* 背景の棚の上部との余白 */
+/* bodyへの共通指定 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
 }
 
-/* 本を陳列するグリッド */
-.bookshelf-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 82px 40px; /* 本の間のすき間（行間・列間）                */
-  padding: 0 20px;
-  list-style: none;
-  margin-bottom: 0;
+/* 検索フォームのコンテナ */
+.container {
+    margin: 40px auto;
+    width: 100%;
+    max-width: 500px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
 }
 
-    
-/* 本棚背景を適用したいページ用のID */
-body#bookshelf-page {
-    /* 背景画像を指定 */
-    background-image: url('../img/shelf2.png');
-    /* 画像全体が見えるように調整 */
-    background-size: contain;
-    /* 画像の繰り返しを禁止 */
-    background-repeat: no-repeat;
-    /* 画像の位置を調整 */
-    background-position: center 290px;
-    /* スクロールと一緒に背景も動くようにする */
-    background-attachment: scroll;
-    /* ★変更点: ページの最小の高さを設定 */
-    min-height: 1200px; /* この数値を調整して、画像全体が収まるようにしてください */
+/* 検索ページのh1 */
+.container h1 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-weight: 700;
 }
 
-/* --- 本棚ページのコンテンツ用コンテナ --- */
-.bookshelf-content {
-  /* コンテンツの背景に半透明の黒を敷き、文字を読みやすくする */
-  /*background-color: rgba(0, 0, 0, 0.4);*/
-  border-radius: 10px;
-  padding: 2em;
-  margin: 4em auto; /* 上下の余白と中央揃え */
-  max-width: 1200px; /* コンテナの最大幅 */
+/* 検索ページのフォーム */
+.container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* 本棚のタイトル */
-.bookshelf-title {
-  color: rgb(14, 13, 13); /* 文字色を白に */
-    --title-font-size: 5rem;
-  text-align: center;
-  margin-bottom: 1.5em;
+/* 検索ページのラベル */
+.container label {
+    font-weight: 600;
+    color: #555;
+    text-align: left;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* 検索ページのテキスト入力欄 */
+.container input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.container input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* 検索ページの送信ボタン */
+.container input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.container input[type="submit"]:hover {
+    background-color: #0056b3;
 }
