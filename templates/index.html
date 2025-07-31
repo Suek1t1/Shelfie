@@ -2,16 +2,16 @@
 {% set body_id = 'bookshelf-page' %}
 {% block content %}
 
-
 <div class="bookshelf-content">
+  {# shelfが未定義の場合はshelves[0]を使う #}
+  {% set current_shelf = shelf if shelf is defined and shelf else (shelves[0] if shelves else None) %}
 
-  <h3 class="bookshelf-title">本棚{{ shelves[0].shelf_id if shelves else '' }}</h3>
 
-  {% if shelves and shelves[0].books %}
+  {% if current_shelf and current_shelf.books %}
     <ul class="bookshelf-grid">
-      {% for book in shelves[0].books %}
+      {% for book in current_shelf.books %}
         <a href="{{ url_for('book_detail', book_id=book.book_id) }}">
-          <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}", class="book-on-shelf", height="120px">
+          <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}" class="book-on-shelf" height="120px">
         </a>
       {% endfor %}
     </ul>
@@ -19,28 +19,31 @@
     <p class="no-books-message" style="color: white;">この本棚には本がありません。</p>
   {% endif %}
 
+  <!-- 本棚の下に中央揃えでインデックスと前・次ボタン配置 -->
+  <div style="margin: 2em 0 1em 0; text-align: center; display: flex; justify-content: center; align-items: center; gap: 1em;">
+    {% set shelf_index = shelves.index(current_shelf) if current_shelf in shelves else 0 %}
+    <div style="flex:1; text-align:right;">
+      {% if shelf_index > 0 %}
+        <form action="{{ url_for('move_to_prev_shelf', shelf_id=current_shelf.shelf_id) }}" method="post" style="display:inline;">
+          <button type="submit" class="btn btn-secondary btn-sm">前の本棚へ</button>
+        </form>
+      {% else %}
+        <span style="display:inline-block; width:110px;"></span>
+      {% endif %}
+    </div>
+    <div style="flex:0; text-align:center;">
+      <span style="font-size:1.2rem; color:#555;">({{ shelf_index + 1 }}/{{ shelves|length }})</span>
+    </div>
+    <div style="flex:1; text-align:left;">
+      {% if shelf_index < shelves|length - 1 %}
+        <form action="{{ url_for('move_to_next_shelf', shelf_id=current_shelf.shelf_id) }}" method="post" style="display:inline;">
+          <button type="submit" class="btn btn-warning btn-sm">次の本棚へ</button>
+        </form>
+      {% else %}
+        <span style="display:inline-block; width:110px;"></span>
+      {% endif %}
+    </div>
+  </div>
 </div>
-<div style="text-align:center; margin-top:1em;">
-  <button id="prev-btn">&lt;</button>
-  <span id="shelf-index">1</span> / {{ shelves|length }}
-  <button id="next-btn">&gt;</button>
-</div>
-<script>
-  const shelves = document.querySelectorAll('.shelf-block');
-  let current = 0;
-  document.getElementById('prev-btn').onclick = function() {
-    shelves[current].style.display = 'none';
-    current = (current - 1 + shelves.length) % shelves.length;
-    shelves[current].style.display = '';
-    document.getElementById('shelf-index').textContent = current + 1;
-  };
-  document.getElementById('next-btn').onclick = function() {
-    shelves[current].style.display = 'none';
-    current = (current + 1) % shelves.length;
-    shelves[current].style.display = '';
-    document.getElementById('shelf-index').textContent = current + 1;
-  };
-</script>
-
 
 {% endblock %}
