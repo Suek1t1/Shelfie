@@ -1,0 +1,45 @@
+/* 本棚の土台となるコンテナ */
+.shelf-container {
+  position: relative; /* 子要素を絶対配置する際の基準点にする */
+  width: 100%; /* 親要素の幅いっぱいに広げる（最大幅は指定した方が良い） */
+  max-width: 1000px; /* 例えば最大幅を1000pxに */
+  margin: 0 auto; /* 中央揃え */
+
+  aspect-ratio: 1000 / 950;
+
+  /* 背景に本棚の画像を指定 */
+  background-image: url('/static/img/shelf2.png');  /* 画像のパスを正しく指定 */
+  background-size: contain;                         /* コンテナに収まるように背景を調整 */
+  background-repeat: no-repeat;
+}
+
+/* 本棚に置く本の画像 */
+.book-on-shelf {
+  position: absolute;                               /* 親要素を基準に絶対配置する */
+  height: 22%;                                      /* 本の高さを本棚の高さに対する割合で指定 */
+  width: auto;                                      /* 幅は高さに応じて自動調整 */
+  transform: translateX(-50%); /* 中央を基準に配置するための調整 */
+}
+
+/*各本の位置を :nth-child を使って個別に指定*/
+
+/* --- 1段目（一番上）--- */
+.book-on-shelf:nth-child(1) { bottom: 76.5%; left: 20%; }
+.book-on-shelf:nth-child(2) { bottom: 76.5%; left: 40%; }
+.book-on-shelf:nth-child(3) { bottom: 76.5%; left: 60%; }
+.book-on-shelf:nth-child(4) { bottom: 76.5%; left: 80%; }
+
+/* --- 2段目 --- */
+.book-on-shelf:nth-child(5) { bottom: 52%; left: 20%; }
+.book-on-shelf:nth-child(6) { bottom: 52%; left: 40%; }
+.book-on-shelf:nth-child(7) { bottom: 52%; left: 60%; }
+.book-on-shelf:nth-child(8) { bottom: 52%; left: 80%; }
+
+/* --- 3段目 --- */
+.book-on-shelf:nth-child(9) { bottom: 27.5%; left: 20%; }
+.book-on-shelf:nth-child(10) { bottom: 27.5%; left: 40%; }
+/* ...以下、16冊目まで同様に続く... */
+
+/* --- 4段目（一番下）--- */
+.book-on-shelf:nth-child(13) { bottom: 3%; left: 20%; }
+.book-on-shelf:nth-child(14) { bottom: 3%; left: 40%; }

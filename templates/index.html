@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="shelf-container">
+        {% for book in books %}
+            {# 本の画像。後でCSSで位置を指定する #}
+            <img class="book-on-shelf" src="{{ url_for('show_image', book_id=book.book_id) }}" alt="{{ book.name }}">
+        {% endfor %}
+    </div>
+{% endblock %}
