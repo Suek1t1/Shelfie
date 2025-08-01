@@ -16,7 +16,7 @@ from flask_wtf.file import FileAllowed, FileRequired
 class UserInfoForm(FlaskForm):
     # 表紙、ページ画像：ファイルのアップロード
     img = FileField(
-        "画像: ",
+        "表紙画像: ",
         validators=[
             FileRequired("ファイルを選択してください。"),
             FileAllowed(["jpg", "jpeg", "png"], "サポートされていない画像形式です。"),
@@ -46,7 +46,7 @@ class UserInfoForm(FlaskForm):
 class EditBookForm(FlaskForm):
     # 表紙、ページ画像：ファイルのアップロード
     img = FileField(
-        "画像: ",
+        "表紙画像: ",
         validators=[
             FileAllowed(["jpg", "jpeg", "png"], "サポートされていない画像形式です。"),
         ],
@@ -62,6 +62,13 @@ class EditBookForm(FlaskForm):
     # ISBNコード：整数値入力
     code = IntegerField(
         "ISBNコード: ", validators=[DataRequired("ISBNコードを入力してください")]
+    )
+    # 表紙、ページ画像：ファイルのアップロード
+    page_img = FileField(
+        "お気に入りページ: ",
+        validators=[
+            FileAllowed(["jpg", "jpeg", "png"], "サポートされていない画像形式です。"),
+        ],
     )
     # テキストエリア：自由記述
     note = TextAreaField("感想,メモ: ")

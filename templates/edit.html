@@ -1,22 +1,58 @@
 {% extends "base.html" %}
 
-{% block title %}
-    <h1>書籍編集</h1>
-{% endblock %}
-
 {% block content %}
+<div class="container">
+    <h1>書籍編集</h1>
     <form method="POST" enctype="multipart/form-data">
-        {{ form.hidden_tag() }}<br>
+        {{ form.hidden_tag() }}
+
+        {# 現在の画像表示エリア #}
         {% if book.img %}
-            <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="現在の画像" height="120">
+            <div class="current-image-wrapper">
+                <p>現在の書影</p>
+                <img class="current-book-image" src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="現在の書影">
+            </div>
         {% endif %}
-        <br>
-        {{ form.img.label }}{{ form.img() }}<br>
-        {{ form.name.label }}{{ form.name(size=20) }}<br>
-        {{ form.author.label }}{{ form.author() }}<br>
-        {{ form.code.label }}{{ form.code() }}<br>
-        {{ form.note.label }}{{ form.note(style="height:100px; width:150px")}}<br>
-        {{ form.tag.label }}{{ form.tag(size=20) }}<br>
-        {{ form.submit() }}
+
+        {# --- 各フォーム要素 --- #}
+        <div>
+            {{ form.img.label }}
+            {{ form.img() }}
+        </div>
+
+        <div>
+            {{ form.name.label }}
+            {{ form.name() }}
+        </div>
+
+        <div>
+            {{ form.author.label }}
+            {{ form.author() }}
+        </div>
+
+        <div>
+            {{ form.code.label }}
+            {{ form.code() }}
+        </div>
+
+        {# ↓↓↓ ここに新しい項目を追加しました ↓↓↓ #}
+        <div>
+            {{ form.page_img.label }}
+            {{ form.page_img() }}
+        </div>
+        
+        <div>
+            {{ form.tag.label }}
+            {{ form.tag() }}
+        </div>
+
+        <div>
+            {{ form.note.label }}
+            {# インラインスタイルは削除し、CSSで制御します #}
+            {{ form.note() }} 
+        </div>
+
+        {{ form.submit(value='更新する') }}
     </form>
+</div>
 {% endblock %}

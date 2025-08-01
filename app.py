@@ -16,6 +16,7 @@ import os
 from datetime import datetime
 import io
 
+MAX_BOOKS_PER_SHELF = 16
 # ==================================================
 # インスタンス生成
 # ==================================================
@@ -58,6 +59,8 @@ class Book(db.Model):
     add_date = db.Column(db.DateTime(255), nullable=False, default=func.now())
     # ISBNコード
     code = db.Column(db.Integer, nullable=False)
+    # ページ画像
+    page_img = db.Column(db.LargeBinary)
     # メモ
     memo = db.Column(db.String(511))
     # タグ
@@ -104,9 +107,33 @@ def index():
         new_shelf = Shelf()
         db.session.add(new_shelf)
         db.session.commit()
-    # 本を取得
-    shelves = Shelf.query.all()
-    books = Book.query.all()
+
+    # 全ての本を取得
+    books = Book.query.order_by(Book.book_id).all()
+    # 必要な本棚数を計算
+    shelf_count = Shelf.query.count()
+    required_shelf_count = (len(books) + MAX_BOOKS_PER_SHELF - 1) // MAX_BOOKS_PER_SHELF
+
+    # 足りない本棚を作成
+    for _ in range(shelf_count, required_shelf_count):
+        new_shelf = Shelf()
+        db.session.add(new_shelf)
+        db.session.commit()
+
+    # 本棚リストをID昇順で取得
+    shelves = Shelf.query.order_by(Shelf.shelf_id).all()
+
+    # 本を本棚ごとに最大16冊ずつ振り分け直す
+    for idx, book in enumerate(books):
+        shelf_idx = idx // MAX_BOOKS_PER_SHELF
+        if shelf_idx < len(shelves):
+            if book.shelf_id != shelves[shelf_idx].shelf_id:
+                book.shelf_id = shelves[shelf_idx].shelf_id
+    db.session.commit()
+
+    # 最新の状態で取得
+    shelves = Shelf.query.order_by(Shelf.shelf_id).all()
+    books = Book.query.order_by(Book.book_id).all()
     return render_template("index.html", shelves=shelves, books=books)
 
 
@@ -124,15 +151,24 @@ def new_book():
         author = form.author.data
         add_date = datetime.now()  # 現在日時の設定
         code = form.code.data
-        first_shelf = Shelf.query.first()
+        # 最新の本棚を取得
+        last_shelf = Shelf.query.order_by(Shelf.shelf_id.desc()).first()
+        if not last_shelf or len(last_shelf.books) >= MAX_BOOKS_PER_SHELF:
+            # 新しい本棚を作成
+            new_shelf = Shelf()
+            db.session.add(new_shelf)
+            db.session.commit()
+            shelf_id = new_shelf.shelf_id
+        else:
+            shelf_id = last_shelf.shelf_id
         # インスタンス生成
         book = Book(
-            img=img_data,  # バイナリデータの場合は file.read() などで渡す→完了
+            img=img_data,
             name=name,
             author=author,
-            add_date=add_date,  # 日付型ならdatetime型で渡す→完了
+            add_date=add_date,
             code=code,
-            shelf_id=first_shelf.shelf_id,  # 紐づけ
+            shelf_id=shelf_id,  # 最新の本棚IDまたは新規本棚IDで紐づけ
         )
         # 登録
         db.session.add(book)
@@ -199,6 +235,9 @@ def edit(book_id):
         book.name = form.name.data
         book.author = form.author.data
         book.code = form.code.data
+        page_img_file = request.files["page_img"]
+        if page_img_file and page_img_file.filename:
+            book.page_img = page_img_file.read()
         book.memo = form.note.data
         book.tag = form.tag.data
         # 反映
@@ -234,7 +273,48 @@ def serve_image(book_id):
         )
     else:
         abort(404)
+@app.route("/page_image/<int:book_id>/")
+def serve_page_image(book_id):
+    book = Book.query.get_or_404(book_id)
+    if book.page_img:
+        return send_file(
+            io.BytesIO(book.page_img), mimetype="image/png", as_attachment=False
+        )
+    else:
+        abort(404)
 
+
+
+# 本棚を次に表示する用
+@app.route("/<int:shelf_id>/move_to_next_shelf", methods=["POST"])
+def move_to_next_shelf(shelf_id):
+    # 現在の本棚IDの次の本棚を取得
+    next_shelf = Shelf.query.filter(Shelf.shelf_id > shelf_id).order_by(Shelf.shelf_id).first()
+    if next_shelf:
+        flash(f"本棚{next_shelf.shelf_id}を表示します。", "success")
+        return redirect(url_for("show_shelf", shelf_id=next_shelf.shelf_id))
+    else:
+        flash("次の本棚がありません。", "error")
+        return redirect(url_for("show_shelf", shelf_id=shelf_id))
+
+# 本棚ID指定で本棚を表示する
+@app.route("/shelf/<int:shelf_id>")
+def show_shelf(shelf_id):
+    shelves = Shelf.query.order_by(Shelf.shelf_id).all()
+    shelf = Shelf.query.get(shelf_id)
+    return render_template("index.html", shelves=shelves, shelf=shelf)
+
+# 前の本棚を表示する用
+@app.route("/<int:shelf_id>/move_to_prev_shelf", methods=["POST"])
+def move_to_prev_shelf(shelf_id):
+    # 現在の本棚IDの前の本棚を取得
+    prev_shelf = Shelf.query.filter(Shelf.shelf_id < shelf_id).order_by(Shelf.shelf_id.desc()).first()
+    if prev_shelf:
+        flash(f"本棚{prev_shelf.shelf_id}を表示します。", "success")
+        return redirect(url_for("show_shelf", shelf_id=prev_shelf.shelf_id))
+    else:
+        flash("前の本棚がありません。", "error")
+        return redirect(url_for("show_shelf", shelf_id=shelf_id))
 
 # 実行
 if __name__ == "__main__":

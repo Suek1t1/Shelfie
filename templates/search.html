@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}
-    <h1>書籍検索</h1>
-{% endblock %}
-
 {% block content %}
-    <form method="POST">
-        {{ form.hidden_tag() }}<br>
-        {{ form.search_word.label }}{{ form.search_word(size=20) }}<br>
-        {{ form.search_code.label }}{{ form.search_code(size=20) }}<br>
-        {{ form.submit() }}
+<div class="container">
+    <h1>書籍検索</h1>
+    <form method="POST" novalidate>
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.search_word.label }}
+            {{ form.search_word(size=20) }}
+        </div>
+
+        <div>
+            {{ form.search_code.label }}
+            {{ form.search_code(size=20) }}
+        </div>
+
+        {{ form.submit(value='検索する') }}
     </form>
+</div>
 {% endblock %}
