@@ -255,7 +255,7 @@ MIROで作成。以下に添付します。
 
 \begin{table}[htbp]
   \centering
-  \begin{tabular}{|l|l|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{3cm}|}
+  \begin{tabular}{|l|l|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{3cm}|}
     \hline
     \textbf{カラム名} & \textbf{データ型} & \textbf{制約} & \textbf{説明} \\
     \hline\hline
@@ -286,7 +286,7 @@ MIROで作成。以下に添付します。
 本棚テーブルの主キーは'shelf\_id'で、本棚の一意な識別子です。'shelf\_name'は本棚の名前を保存するためのVARCHAR型で、NOT NULL制約を付けています。外部キーとしてbook\_idを設定し、ブックテーブルのbook\_idと関連付けています。これにより、本棚に登録されている本の情報を参照できます。
 \begin{table}[htbp]
   \centering
-  \begin{tabular}{|l|l|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{3cm}|}
+  \begin{tabular}{|l|l|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{3cm}|}
     \hline
     \textbf{カラム名} & \textbf{データ型} & \textbf{制約} & \textbf{説明} \\
     \hline\hline
@@ -297,10 +297,11 @@ MIROで作成。以下に添付します。
   \label{tab:shelftable}
 \end{table}
 
-以下に、ER図を提示します。
+次ページに、ER図を提示します。
+\clearpage
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=70mm]{ER_diagram.jpg}
+\includegraphics[width=120mm]{ER_diagram.jpg}
 \caption{ER図}
 \label{fig:func}
 \end{figure}
