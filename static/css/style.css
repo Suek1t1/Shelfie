@@ -379,6 +379,17 @@ body {
     border-radius: 8px;
     padding: 20px;
     text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.result-item img{
+  width: 80px;
+  height: auto;
+  border-radius: 6px;
 }
 
 .result-item p {

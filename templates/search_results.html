@@ -10,11 +10,14 @@
 
         <div class="results-list">
             {% for book in books %}
-                <div class="result-item">
-                    <p><strong>タイトル:</strong> {{ book.name }}</p>
-                    <p><strong>著者:</strong> {{ book.author }}</p>
-                    <p><strong>ISBNコード:</strong> {{ book.code }}</p>
-                </div>
+                <a href="{{ url_for('book_detail', book_id=book.book_id) }}" class="result-item">
+                    <img src="{{ url_for('serve_image', book_id=book.book_id) }}" alt="{{ book.name }}">
+                    <div>
+                        <p><strong>タイトル:</strong> {{ book.name }}</p>
+                        <p><strong>著者:</strong> {{ book.author }}</p>
+                        <p><strong>ISBNコード:</strong> {{ book.code }}</p>
+                    </div>
+                </a>
             {% endfor %}
         </div>
     
